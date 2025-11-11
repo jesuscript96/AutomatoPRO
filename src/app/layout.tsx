@@ -51,6 +51,31 @@ export const metadata: Metadata = {
   title: 'Storytelling | Personalización 100% para Marcas con Personalidad',
   description:
     'Creamos experiencias web únicas que cuentan tu historia. Personalización 100% para marcas con personalidad que quieren dejar huella con su storytelling.',
+  icons: {
+    icon: '/logotab.png',
+    shortcut: '/logotab.png',
+    apple: '/logotab.png',
+  },
+  openGraph: {
+    title: 'Storytelling | Personalización 100% para Marcas con Personalidad',
+    description:
+      'Creamos experiencias web únicas que cuentan tu historia. Personalización 100% para marcas con personalidad que quieren dejar huella con su storytelling.',
+    images: [
+      {
+        url: '/logotab.png',
+        width: 1200,
+        height: 630,
+        alt: 'AutomatoPRO Logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Storytelling | Personalización 100% para Marcas con Personalidad',
+    description:
+      'Creamos experiencias web únicas que cuentan tu historia. Personalización 100% para marcas con personalidad que quieren dejar huella con su storytelling.',
+    images: ['/logotab.png'],
+  },
 };
 
 export default function RootLayout({
