@@ -10,21 +10,21 @@ const serviceCards = [
     title: 'Contenido que Impacta',
     text: 'Creamos narrativas imposibles de olvidar. Estrategia y creatividad que hacen destacar tu marca en un mercado saturado. Transformamos ideas complejas en mensajes claros y poderosos que resuenan con tu audiencia. Cada palabra, cada imagen, cada elemento visual está cuidadosamente diseñado para generar impacto y dejar una huella duradera en quienes interactúan con tu marca.',
     keyword: 'Storytelling',
-    bgColor: 'bg-white border border-black', // Blanco con borde negro
+    bgColor: 'bg-white',
   },
   {
     id: 2,
     title: 'Diseño que Define',
     text: 'Identidades de marca distintivas y memorables que elevan tu presencia y te diferencian de la competencia desde el primer contacto. Desarrollamos sistemas visuales completos que comunican tu esencia de manera coherente y poderosa. Cada detalle, desde la tipografía hasta la paleta de colores, está pensado para construir una identidad única que refleje tus valores y conecte emocionalmente con tu público objetivo.',
     keyword: 'Branding',
-    bgColor: 'bg-white border border-black', // Blanco con borde negro
+    bgColor: 'bg-white',
   },
   {
     id: 3,
     title: 'Experiencias que Conectan',
     text: 'De la estrategia a la ejecución, diseñamos experiencias audaces que amplifican tu visibilidad y forjan conexiones profundas con tu audiencia. Creamos interfaces intuitivas y funcionales que guían a los usuarios de manera natural, transformando cada interacción en una oportunidad de engagement. Nuestro enfoque combina diseño centrado en el usuario con innovación tecnológica para construir experiencias digitales que no solo funcionan, sino que inspiran y generan resultados tangibles.',
     keyword: 'Experience',
-    bgColor: 'bg-white border border-black', // Blanco con borde negro
+    bgColor: 'bg-white',
   },
 ];
 
@@ -186,7 +186,7 @@ export default function Services() {
     };
   }, { scope: containerRef, dependencies: [isReducedMotion] });
 
-  return (
+return (
     <section id="services" className="relative bg-white overflow-hidden">
       
       <div ref={containerRef} className="relative w-full">
@@ -222,114 +222,108 @@ export default function Services() {
               };
             }
 
-            // Estructura diferente para la segunda card
-            if (index === 1) {
+            // Mobile-first card designs with unique layouts
+            if (index === 0) { // Card 1: Title, Image, Keyword, Text
               return (
                 <div
                   key={card.id}
-                  className={`service-card ${card.bgColor} w-full relative`}
+                  className={`service-card ${card.bgColor} w-full p-6 md:p-12`}
                   style={{
                     ...cardStyle,
-                    boxShadow: '-4px -4px 0px 0px rgba(0, 0, 0, 0.2), -8px -8px 0px 0px rgba(0, 0, 0, 0.1), -12px -12px 0px 0px rgba(0, 0, 0, 0.05)',
+                    boxShadow: '4px 4px 0px 0px rgba(0, 0, 0, 0.2), -4px -4px 0px 0px rgba(0, 0, 0, 0.2), 8px 8px 0px 0px rgba(0, 0, 0, 0.1), -8px -8px 0px 0px rgba(0, 0, 0, 0.1), 12px 12px 0px 0px rgba(0, 0, 0, 0.05), -12px -12px 0px 0px rgba(0, 0, 0, 0.05)',
                   }}
                 >
-                  <div className="h-full w-full flex">
-                    {/* Columna Izquierda: Título y Palabra clave */}
-                    <div className="w-1/2 flex flex-col justify-between p-12 md:p-20">
-                      <div>
-                        <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-black leading-tight mb-8">
-                          {card.title}
-                        </h2>
-                        <span className="text-5xl md:text-6xl font-bold text-black opacity-50">
-                          {card.keyword}
-                        </span>
-                      </div>
-                      <div></div> {/* Spacer */}
+                  <div className="h-full w-full flex flex-col md:flex-row">
+                    <div className="w-full md:w-1/3 flex flex-col justify-center items-center text-center md:text-left md:items-start p-4">
+                      <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight">
+                        {card.title}
+                      </h2>
                     </div>
-
-                    {/* Columna Derecha: Imagen abajo */}
-                    <div className="w-1/2 flex items-end justify-center p-12 md:p-20 pb-8">
-                      <div className="relative w-full aspect-square" style={{ padding: '10%' }}>
-                        <div className="relative w-full h-full flex items-center justify-center">
-                          <img 
-                            src="/undraw_making-art_c05m.svg" 
-                            alt={card.title}
-                            className="w-full h-full object-contain"
-                            style={{ filter: 'grayscale(100%)' }}
-                          />
-                        </div>
-                      </div>
+                    <div className="w-full md:w-1/3 flex justify-center items-center p-4">
+                      <img 
+                        src="/contenido2.svg" 
+                        alt={card.title}
+                        className="w-1/2 md:w-full h-auto object-contain"
+                        style={{ filter: 'grayscale(100%)' }}
+                      />
                     </div>
-                  </div>
-                  
-                  {/* Texto en la parte inferior, ancho completo */}
-                  <div className="absolute bottom-0 left-0 right-0 p-12 md:p-20 pb-8">
-                    <p className="text-body-lg md:text-xl text-gray-700 font-light leading-relaxed max-w-2xl">
-                      {card.text}
-                    </p>
+                    <div className="w-full md:w-1/3 flex flex-col justify-center items-center text-center p-4">
+                      <span className="text-4xl md:text-5xl font-bold text-black opacity-50 mb-4">
+                        {card.keyword}
+                      </span>
+                      <p className="text-base md:text-lg text-gray-700 font-light leading-relaxed">
+                        {card.text}
+                      </p>
+                    </div>
                   </div>
                 </div>
               );
             }
 
-            // Estructura estándar para primera y tercera card
-            return (
-              <div
-                key={card.id}
-                className={`service-card ${card.bgColor} w-full`}
-                style={{
-                  ...cardStyle,
-                  boxShadow: '4px 4px 0px 0px rgba(0, 0, 0, 0.2), 8px 8px 0px 0px rgba(0, 0, 0, 0.1), 12px 12px 0px 0px rgba(0, 0, 0, 0.05)',
-                }}
-              >
-                <div className="h-full w-full flex">
-                  {/* Columna Izquierda: Título arriba + Palabra clave en medio */}
-                  <div className="w-1/3 flex flex-col justify-between p-12 md:p-20">
-                    <div>
-                      <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-black leading-tight">
+            if (index === 1) { // Card 2: Title, Keyword, Image, Text
+              return (
+                <div
+                  key={card.id}
+                  className={`service-card ${card.bgColor} w-full p-6 md:p-12`}
+                  style={{
+                    ...cardStyle,
+                    boxShadow: '4px 4px 0px 0px rgba(0, 0, 0, 0.2), -4px -4px 0px 0px rgba(0, 0, 0, 0.2), 8px 8px 0px 0px rgba(0, 0, 0, 0.1), -8px -8px 0px 0px rgba(0, 0, 0, 0.1), 12px 12px 0px 0px rgba(0, 0, 0, 0.05), -12px -12px 0px 0px rgba(0, 0, 0, 0.05)',
+                  }}
+                >
+                  <div className="h-full w-full flex flex-col md:flex-row">
+                    <div className="w-full md:w-1/2 flex flex-col justify-center items-center text-center md:text-left md:items-start p-4">
+                      <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight mb-4">
                         {card.title}
                       </h2>
-                    </div>
-                    <div className="flex items-center justify-center">
-                      <span className="text-5xl md:text-6xl font-bold text-black opacity-50">
+                      <span className="text-4xl md:text-5xl font-bold text-black opacity-50">
                         {card.keyword}
                       </span>
                     </div>
-                    <div></div> {/* Spacer para mantener la palabra clave centrada */}
+                    <div className="w-full md:w-1/2 flex flex-col justify-center items-center p-4">
+                      <img 
+                        src="/undraw_making-art_c05m.svg" 
+                        alt={card.title}
+                        className="w-1/2 md:w-full h-auto object-contain mb-4"
+                        style={{ filter: 'grayscale(100%)' }}
+                      />
+                       <p className="text-base md:text-lg text-gray-700 font-light leading-relaxed text-center">
+                        {card.text}
+                      </p>
+                    </div>
                   </div>
+                </div>
+              );
+            }
 
-                  {/* Columna Centro: Texto (centrado verticalmente) */}
-                  <div className="w-1/3 flex flex-col justify-center p-12 md:p-20">
-                    <p className="text-body-lg md:text-xl text-gray-700 font-light leading-relaxed">
+            // Card 3: Title, Text, Image, Keyword
+            return (
+              <div
+                key={card.id}
+                className={`service-card ${card.bgColor} w-full p-6 md:p-12`}
+                style={{
+                  ...cardStyle,
+                  boxShadow: '4px 4px 0px 0px rgba(0, 0, 0, 0.2), -4px -4px 0px 0px rgba(0, 0, 0, 0.2), 8px 8px 0px 0px rgba(0, 0, 0, 0.1), -8px -8px 0px 0px rgba(0, 0, 0, 0.1), 12px 12px 0px 0px rgba(0, 0, 0, 0.05), -12px -12px 0px 0px rgba(0, 0, 0, 0.05)',
+                }}
+              >
+                <div className="h-full w-full flex flex-col md:flex-row">
+                  <div className="w-full md:w-2/3 flex flex-col justify-center p-4">
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight mb-4 text-center md:text-left">
+                      {card.title}
+                    </h2>
+                    <p className="text-base md:text-lg text-gray-700 font-light leading-relaxed text-center md:text-left">
                       {card.text}
                     </p>
                   </div>
-
-                  {/* Columna Derecha: Imagen abajo con padding */}
-                  <div className="w-1/3 flex items-end justify-center p-12 md:p-20 pb-8">
-                    <div className="relative w-full aspect-square" style={{ padding: '10%' }}>
-                      {index === 0 ? (
-                        // Primera card: mostrar contenido2.svg
-                        <div className="relative w-full h-full flex items-center justify-center">
-                          <img 
-                            src="/contenido2.svg" 
-                            alt={card.title}
-                            className="w-full h-full object-contain"
-                            style={{ filter: 'grayscale(100%)' }}
-                          />
-                        </div>
-                      ) : index === 2 ? (
-                        // Tercera card: mostrar RV.svg
-                        <div className="relative w-full h-full flex items-center justify-center">
-                          <img 
-                            src="/RV.svg" 
-                            alt={card.title}
-                            className="w-full h-full object-contain"
-                            style={{ filter: 'grayscale(100%)' }}
-                          />
-                        </div>
-                      ) : null}
-                    </div>
+                  <div className="w-full md:w-1/3 flex flex-col justify-center items-center p-4">
+                    <img 
+                      src="/RV.svg" 
+                      alt={card.title}
+                      className="w-1/2 md:w-full h-auto object-contain mb-4"
+                      style={{ filter: 'grayscale(100%)' }}
+                    />
+                    <span className="text-4xl md:text-5xl font-bold text-black opacity-50">
+                      {card.keyword}
+                    </span>
                   </div>
                 </div>
               </div>

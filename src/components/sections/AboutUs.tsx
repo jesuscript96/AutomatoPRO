@@ -4,13 +4,18 @@ import FadeIn from '@/components/animations/FadeIn';
 export default function AboutUs() {
 
   return (
-    <section id="about" className="relative bg-white">
+    <section id="about" className="relative bg-white py-20">
       
-      <div className="container mx-auto px-6 py-40 relative">
+      <div 
+        className="container mx-auto px-6 py-20 relative border border-black"
+        style={{
+          boxShadow: '4px 4px 0px 0px rgba(0, 0, 0, 0.2), -4px -4px 0px 0px rgba(0, 0, 0, 0.2), 8px 8px 0px 0px rgba(0, 0, 0, 0.1), -8px -8px 0px 0px rgba(0, 0, 0, 0.1), 12px 12px 0px 0px rgba(0, 0, 0, 0.05), -12px -12px 0px 0px rgba(0, 0, 0, 0.05)'
+        }}
+      >
         {/* Bloques de colores */}
-        {/* Bloque amarillo - Cuadrado */}
+        {/* Bloque con imagen (Desktop) */}
         <div 
-          className="absolute w-[280px] h-[280px] md:w-[320px] md:h-[320px] border border-black z-10"
+          className="hidden md:block absolute w-[280px] h-[280px] md:w-[320px] md:h-[320px] border border-black z-10"
           style={{
             top: '15%',
             right: '10%',
@@ -19,6 +24,17 @@ export default function AboutUs() {
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
+          }}
+        />
+        
+        {/* Bloque transparente (Mobile) */}
+        <div 
+          className="md:hidden absolute w-[200px] h-[200px] border border-black z-10"
+          style={{
+            top: '10%',
+            right: '5%',
+            boxShadow: '2px 2px 0px 0px rgba(0, 0, 0, 0.1), 4px 4px 0px 0px rgba(0, 0, 0, 0.05)',
+            backgroundColor: 'transparent'
           }}
         />
         
@@ -82,4 +98,3 @@ export default function AboutUs() {
     </section>
   );
 }
-

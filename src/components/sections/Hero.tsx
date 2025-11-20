@@ -37,7 +37,7 @@ export default function Hero() {
             </div>
 
             {/* Localización - Derecha */}
-            <div className="md:absolute md:right-6 lg:right-8 text-center md:text-right">
+            <div className="md:absolute md:right-6 lg:right-8 text-center md:text-right hidden md:block">
               <p className="text-body-lg text-gray-700 font-light">
                 Estamos en Ciudad de México
               </p>
@@ -53,7 +53,7 @@ export default function Hero() {
             transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="text-left relative z-30"
           >
-            <h1 className="uppercase text-[1.8rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.5rem] font-normal text-black leading-none">
+            <h1 className="uppercase text-[2.34rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.5rem] font-normal text-black leading-none">
               TU WEB,
             </h1>
           </motion.div>
@@ -77,7 +77,7 @@ export default function Hero() {
             transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="flex-1 flex justify-end relative z-30"
           >
-            <h1 className="uppercase text-[1.8rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.5rem] font-medium text-black leading-none text-right">
+            <h1 className="uppercase text-[2.34rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.5rem] font-medium text-black leading-none text-right">
               TU
             </h1>
           </motion.div>
@@ -91,7 +91,7 @@ export default function Hero() {
             transition={{ duration: 1, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
             className="text-right relative z-30"
           >
-            <h1 className="uppercase text-[1.8rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.5rem] font-medium text-black leading-none">
+            <h1 className="uppercase text-[2.34rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.5rem] font-medium text-black leading-none">
               ESCAPARATE
             </h1>
           </motion.div>
@@ -114,7 +114,7 @@ export default function Hero() {
             transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="text-left relative z-30"
           >
-            <h1 className="uppercase text-[1.8rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.5rem] font-normal text-black leading-none">
+            <h1 className="uppercase text-[2.34rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.5rem] font-normal text-black leading-none">
               AL MUNDO.
             </h1>
           </motion.div>
@@ -128,7 +128,7 @@ export default function Hero() {
             transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="text-right relative z-30"
           >
-            <h1 className="uppercase text-[1.8rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.5rem] font-semibold text-black leading-none">
+            <h1 className="uppercase text-[2.34rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.5rem] font-semibold text-black leading-none">
               REFLEJA TU
             </h1>
           </motion.div>
@@ -142,7 +142,7 @@ export default function Hero() {
             transition={{ duration: 1, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="text-center relative z-30"
           >
-            <h1 className="uppercase text-[1.8rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.8rem] font-medium text-black leading-none">
+            <h1 className="uppercase text-[2.34rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.8rem] font-medium text-black leading-none">
               PERSONALIDAD
             </h1>
           </motion.div>

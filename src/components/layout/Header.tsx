@@ -74,7 +74,7 @@ export default function Header() {
       }`}
     >
       <nav className="w-full">
-        <div className="flex items-center justify-between w-full">
+        <div className="flex items-center justify-center md:justify-between w-full">
           {/* Sección izquierda */}
           <ul className="hidden md:flex items-center flex-1 justify-evenly">
             {leftNavItems.map((item, index) => (

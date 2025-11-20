@@ -82,7 +82,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="flex-1 relative z-30"
+            className="flex-1 relative z-30 hidden md:block"
           >
             <p className="text-body-lg text-gray-700 font-light">
               Si tu marca tiene personalidad y quieres dejar huella con tu storytelling, hablemos.
@@ -98,7 +98,7 @@ export default function Contact() {
             transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="relative z-30"
           >
-            <p className="text-body-lg text-gray-700 font-light">
+            <p className="text-xl md:text-body-lg text-gray-700 font-light">
               Estamos aquí para crear algo único contigo.
             </p>
           </motion.div>

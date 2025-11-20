@@ -64,7 +64,7 @@ export default function Works() {
     // Función para calcular y actualizar alturas
     const setupCards = () => {
       const viewportHeight = window.innerHeight;
-      const maxHeight = viewportHeight * 0.6; // 60vh máximo
+      const maxHeight = viewportHeight * 0.7; // 70vh máximo
       
       // Calcular alturas completas de todas las cards
       const cardHeights: number[] = [];
@@ -374,7 +374,7 @@ export default function Works() {
               key={work.id}
               className="work-card border-t border-black"
               style={{ 
-                maxHeight: '60vh', 
+                maxHeight: '70vh', 
                 overflow: 'hidden',
                 backgroundColor: workColors[index] || '#ffffff',
                 boxShadow: '-4px -4px 0px 0px rgba(0, 0, 0, 0.2), -8px -8px 0px 0px rgba(0, 0, 0, 0.1), -12px -12px 0px 0px rgba(0, 0, 0, 0.05)',
@@ -385,17 +385,17 @@ export default function Works() {
                 <span className="text-3xl font-bold">{work.id}.</span>
               </div>
 
-              {/* Contenido que se revela - Grid de 3 columnas */}
-              <div className="work-content px-8 pb-8">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                  {/* COLUMNA IZQUIERDA - Información (35% = 4.2/12 ≈ 4) */}
-                  <div className="lg:col-span-4 space-y-6">
-                    <h3 className="text-6xl lg:text-7xl font-black leading-tight text-black">
+              {/* Contenido que se revela - Flex en mobile, Grid en desktop */}
+              <div className="work-content px-4 md:px-8 pb-8">
+                <div className="flex flex-col lg:grid lg:grid-cols-12 gap-8">
+                  {/* COLUMNA IZQUIERDA - Información */}
+                  <div className="lg:col-span-4 space-y-4 lg:space-y-6 order-2 lg:order-1">
+                    <h3 className="text-4xl lg:text-7xl font-black leading-tight text-black">
                       {work.title}
                     </h3>
                     
-                    {/* Metadata en formato tabla */}
-                    <div className="space-y-2 text-lg">
+                    {/* Metadata en formato tabla - Oculto en mobile */}
+                    <div className="hidden lg:block space-y-2 text-lg">
                       <div className="flex border-b border-gray-300 py-2">
                         <span className="font-semibold w-48">Performing Group:</span>
                         <span className="font-normal">{work.performingGroup}</span>
@@ -411,13 +411,13 @@ export default function Works() {
                     </div>
                   </div>
 
-                  {/* COLUMNA CENTRAL - Imagen con overlay (40% = 4.8/12 ≈ 5) */}
-                  <div className="lg:col-span-5 relative">
+                  {/* COLUMNA CENTRAL - Imagen con overlay */}
+                  <div className="lg:col-span-5 relative order-1 lg:order-2">
                     <a 
                       href={work.url} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="block relative aspect-[4/5] overflow-hidden cursor-pointer"
+                      className="block relative aspect-[4/3] lg:aspect-[4/5] overflow-hidden cursor-pointer"
                     >
                       {/* Imagen de fondo */}
                       <div className="relative w-full h-full bg-white border border-black">
@@ -427,7 +427,6 @@ export default function Works() {
                           fill
                           className="object-cover"
                           onError={(e) => {
-                            // Fallback si la imagen no existe
                             const target = e.target as HTMLImageElement;
                             target.style.display = 'none';
                           }}
@@ -445,8 +444,8 @@ export default function Works() {
                     </a>
                   </div>
 
-                  {/* COLUMNA DERECHA - Lista de items (25% = 3/12) */}
-                  <div className="lg:col-span-3">
+                  {/* COLUMNA DERECHA - Lista de items - Oculta en mobile */}
+                  <div className="hidden lg:block lg:col-span-3 order-3">
                     {/* Header de la lista */}
                     <a 
                       href={work.url} 
