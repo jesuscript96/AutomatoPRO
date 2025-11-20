@@ -31,17 +31,9 @@ const serviceCards = [
 export default function Services() {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardsContainerRef = useRef<HTMLDivElement>(null);
-  const [isDesktop, setIsDesktop] = useState(false);
   const [isReducedMotion, setIsReducedMotion] = useState(false);
 
   useEffect(() => {
-    const checkDesktop = () => {
-      setIsDesktop(window.innerWidth >= 768);
-    };
-    
-    checkDesktop();
-    window.addEventListener('resize', checkDesktop);
-    
     if (typeof window !== 'undefined') {
       const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
       setIsReducedMotion(mediaQuery.matches);
@@ -53,14 +45,9 @@ export default function Services() {
       mediaQuery.addEventListener('change', handleMotionChange);
       
       return () => {
-        window.removeEventListener('resize', checkDesktop);
         mediaQuery.removeEventListener('change', handleMotionChange);
       };
     }
-    
-    return () => {
-      window.removeEventListener('resize', checkDesktop);
-    };
   }, []);
 
   useGSAP(() => {
@@ -73,8 +60,7 @@ export default function Services() {
       const cards = cardsContainerRef.current?.querySelectorAll('.service-card');
       if (!cards || cards.length === 0) return;
       
-      // Si no es desktop o tiene reduced motion, no aplicar efecto
-      if (!isDesktop || isReducedMotion) {
+      if (isReducedMotion) {
         cards.forEach((card) => {
           const cardElement = card as HTMLElement;
           gsap.set(cardElement, { opacity: 1, position: 'relative', transform: 'none' });
@@ -198,7 +184,7 @@ export default function Services() {
         }
       });
     };
-  }, { scope: containerRef, dependencies: [isDesktop, isReducedMotion] });
+  }, { scope: containerRef, dependencies: [isReducedMotion] });
 
   return (
     <section id="services" className="relative bg-white overflow-hidden">
@@ -212,40 +198,28 @@ export default function Services() {
         >
           {serviceCards.map((card, index) => {
             let cardStyle: React.CSSProperties;
-            if (!isDesktop) {
+            if (index === 0) {
               cardStyle = { 
-                position: 'relative', 
-                opacity: 1, 
+                position: 'absolute',
+                top: 0,
+                left: 0,
                 width: '100%',
-                minHeight: '100vh',
+                height: '100%',
+                zIndex: 1,
+                opacity: 1,
                 transform: 'none'
               };
             } else {
-              if (index === 0) {
-                // Primera card: visible completa desde el inicio
-                cardStyle = { 
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  width: '100%',
-                  height: '100%',
-                  zIndex: 1,
-                  opacity: 1,
-                  transform: 'none'
-                };
-              } else {
-                // Otras cards: empiezan desde abajo
-                cardStyle = { 
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  width: '100%',
-                  height: '100%',
-                  zIndex: index + 1,
-                  opacity: 1,
-                  transform: `translateY(100%)`
-                };
-              }
+              cardStyle = { 
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                zIndex: index + 1,
+                opacity: 1,
+                transform: `translateY(100%)`
+              };
             }
 
             // Estructura diferente para la segunda card
