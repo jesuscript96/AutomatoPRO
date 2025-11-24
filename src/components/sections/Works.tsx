@@ -3,6 +3,7 @@ import { useGSAP } from '@gsap/react';
 import { gsap, ScrollTrigger } from '@/lib/gsap';
 import { useRef } from 'react';
 import Image from 'next/image';
+import ColorizedTitle from '@/components/ui/ColorizedTitle';
 
 interface Work {
   id: number;
@@ -16,7 +17,7 @@ interface Work {
 }
 
 // Colores de fondo en el mismo orden que las cards de Services
-const workColors = ['#ffffff', '#ffffff', '#ffffff']; // Blanco para todos
+const workColors = ['#0066FF', '#FF6B35', '#00C896'];
 
 const works: Work[] = [
   {
@@ -60,12 +61,12 @@ export default function Works() {
 
     const cards = gsap.utils.toArray<HTMLElement>('.work-card');
     const collapsedHeight = 50; // Altura cuando está colapsada (solo número visible)
-    
+
     // Función para calcular y actualizar alturas
     const setupCards = () => {
       const viewportHeight = window.innerHeight;
       const maxHeight = viewportHeight * 0.7; // 70vh máximo
-      
+
       // Calcular alturas completas de todas las cards
       const cardHeights: number[] = [];
       cards.forEach((card) => {
@@ -79,14 +80,14 @@ export default function Works() {
         const fullHeight = Math.min(calculatedHeight, maxHeight);
         cardHeights.push(fullHeight);
       });
-      
+
       // Configurar posición inicial de todas las cards
       cards.forEach((card, index) => {
         const content = card.querySelector('.work-content') as HTMLElement;
-        
+
         // Posición inicial: todas colapsadas, apiladas desde abajo
         const bottomOffset = (cards.length - 1 - index) * collapsedHeight;
-        
+
         gsap.set(card, {
           height: collapsedHeight,
           overflow: 'hidden',
@@ -98,7 +99,7 @@ export default function Works() {
           zIndex: cards.length - index + 10, // Primera card tiene zIndex más alto, por encima de las líneas
           backgroundColor: workColors[index] || '#ffffff', // Color de fondo según el índice
         });
-        
+
         if (content) {
           gsap.set(content, {
             opacity: 0,
@@ -106,7 +107,7 @@ export default function Works() {
           });
         }
       });
-      
+
       // Contenedor de cards debe tener altura fija y posicionamiento relativo (100vh)
       if (containerRef.current) {
         const cardsContainer = containerRef.current.querySelector('.space-y-0') as HTMLElement;
@@ -127,7 +128,7 @@ export default function Works() {
       const setupAnimations = () => {
         // Obtener todas las líneas de secciones cerradas
         const lines = gsap.utils.toArray<HTMLElement>('.work-line');
-        
+
         // Inicializar las líneas: todas visibles y posicionadas correctamente
         // Distribuir uniformemente en el viewport de 100vh
         // La última línea (índice más alto) está en bottom: 0, las demás apiladas por encima
@@ -137,7 +138,7 @@ export default function Works() {
         const totalLinesHeight = totalLines * lineHeight;
         const availableSpace = viewportHeight - totalLinesHeight;
         const spacing = totalLines > 1 ? availableSpace / (totalLines - 1) : 0;
-        
+
         lines.forEach((line, index) => {
           const bottomPosition = index * (lineHeight + spacing);
           gsap.set(line, {
@@ -145,7 +146,7 @@ export default function Works() {
             bottom: bottomPosition,
           });
         });
-        
+
         // Crear timeline maestro para controlar todas las animaciones secuencialmente
         const masterTimeline = gsap.timeline();
 
@@ -164,7 +165,7 @@ export default function Works() {
 
           // Crear animación para esta card
           const cardTimeline = gsap.timeline();
-          
+
           // Si es la primera card, hacer que el título desaparezca
           if (index === 0 && titleRef.current) {
             cardTimeline.to(titleRef.current, {
@@ -180,7 +181,7 @@ export default function Works() {
           // La parte superior de la card debe coincidir con la parte superior de la pantalla
           const viewportHeight = window.innerHeight;
           let bottomPosition = 0;
-          
+
           // Posicionar la card para que su parte superior coincida con la parte superior del viewport
           // Si la card es más alta que el viewport, posicionarla en bottom: 0 (se cortará por abajo)
           // Si la card cabe en el viewport, posicionarla para que quepa completamente desde arriba
@@ -200,12 +201,12 @@ export default function Works() {
           if (index > 0) {
             for (let i = 0; i < index; i++) {
               const previousCard = cards[i];
-              
+
               // Mover las cards anteriores fuera del viewport (por encima)
               // Para que la nueva card quede completamente visible y centrada
               // Usar viewportHeight + un poco más para asegurar que esté completamente fuera
               const prevBottomPosition = viewportHeight + 100; // Fuera del viewport por arriba
-              
+
               // Mover la card anterior hacia arriba desde el inicio, al mismo tiempo que se expande la nueva
               cardTimeline.to(previousCard, {
                 bottom: prevBottomPosition,
@@ -225,25 +226,25 @@ export default function Works() {
               ease: 'power2.out',
             }, 0);
           }
-          
+
           // Animar las líneas de las cards que aún no se han abierto (índices > index)
           for (let i = index + 1; i < lines.length; i++) {
             const line = lines[i];
             if (!line) continue;
-            
+
             // Calcular nueva posición bottom para esta línea
             // La línea debe estar en la posición donde estaría la card colapsada correspondiente
             // Cuando esta línea sube, todas las cards anteriores (0 a index) ya están expandidas
             // La posición bottom es la suma de las alturas de todas las cards debajo de esta línea
             let lineBottomPosition = 0;
-            
+
             // Sumar las alturas de todas las cards que están debajo de esta línea
             // Las cards debajo de la línea i son las cards con índices j donde j > i
             for (let j = i + 1; j < cards.length; j++) {
               // Todas las cards debajo de la línea i aún están colapsadas
               lineBottomPosition += collapsedHeight;
             }
-            
+
             // Mover la línea hacia arriba al mismo tiempo que se expande la card
             cardTimeline.to(line, {
               bottom: lineBottomPosition,
@@ -260,13 +261,13 @@ export default function Works() {
             duration: 1,
             ease: 'power2.out',
           }, 0) // Empieza al mismo tiempo que el empuje
-          // 2. Revelar contenido (con overlap)
-          .to(content, {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: 'power2.out',
-          }, '-=0.3');
+            // 2. Revelar contenido (con overlap)
+            .to(content, {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              ease: 'power2.out',
+            }, '-=0.3');
 
           // Agregar al timeline maestro en el momento correcto
           masterTimeline.add(cardTimeline, startTime);
@@ -275,7 +276,7 @@ export default function Works() {
         // Calcular altura de scroll necesaria
         // Cada card necesita cardAnimationDuration segundos de scroll
         const scrollHeight = viewportHeight * cards.length * cardAnimationDuration;
-        
+
         // Crear ScrollTrigger que controla el timeline maestro
         ScrollTrigger.create({
           trigger: containerRef.current,
@@ -332,21 +333,25 @@ export default function Works() {
 
   return (
     <section id="works" className="relative bg-white">
-      
+
       <div ref={containerRef} className="projects-container">
         {/* Header de la sección */}
         <div className="container mx-auto px-8 py-12">
-          <h2 ref={titleRef} className="text-h1 font-bold text-black mb-6">
-            Nuestros Trabajos
-          </h2>
+          <div ref={titleRef as any}>
+            <ColorizedTitle
+              text="Nuestros Trabajos"
+              tag="h2"
+              className="text-h1 font-bold text-black mb-6"
+            />
+          </div>
         </div>
 
         {/* Cards de trabajos */}
         <div className="space-y-0 relative">
           {/* Líneas de secciones cerradas - siempre visibles en la parte inferior */}
-          <div 
-            className="work-lines-container absolute bottom-0 left-0 right-0 pointer-events-none" 
-            style={{ 
+          <div
+            className="work-lines-container absolute bottom-0 left-0 right-0 pointer-events-none"
+            style={{
               zIndex: 1,
               height: '100vh',
               minHeight: '100vh',
@@ -355,7 +360,7 @@ export default function Works() {
             {works.map((work, index) => (
               <div
                 key={`line-${work.id}`}
-                className="work-line border-t border-black"
+                className="work-line border-t border-white/30"
                 data-line-index={index}
                 style={{
                   height: '50px',
@@ -372,9 +377,9 @@ export default function Works() {
           {works.map((work, index) => (
             <div
               key={work.id}
-              className="work-card border-t border-black"
-              style={{ 
-                maxHeight: '70vh', 
+              className="work-card border-t border-white/30"
+              style={{
+                maxHeight: '70vh',
                 overflow: 'hidden',
                 backgroundColor: workColors[index] || '#ffffff',
                 boxShadow: '-4px -4px 0px 0px rgba(0, 0, 0, 0.2), -8px -8px 0px 0px rgba(0, 0, 0, 0.1), -12px -12px 0px 0px rgba(0, 0, 0, 0.05)',
@@ -382,7 +387,7 @@ export default function Works() {
             >
               {/* Número siempre visible */}
               <div className="work-number px-8 py-2">
-                <span className="text-3xl font-bold">{work.id}.</span>
+                <span className="text-3xl font-bold text-white">{work.id}.</span>
               </div>
 
               {/* Contenido que se revela - Flex en mobile, Grid en desktop */}
@@ -390,21 +395,21 @@ export default function Works() {
                 <div className="flex flex-col lg:grid lg:grid-cols-12 gap-8">
                   {/* COLUMNA IZQUIERDA - Información */}
                   <div className="lg:col-span-4 space-y-4 lg:space-y-6 order-2 lg:order-1">
-                    <h3 className="text-4xl lg:text-7xl font-black leading-tight text-black">
+                    <h3 className="text-4xl lg:text-7xl font-black leading-tight text-white">
                       {work.title}
                     </h3>
-                    
+
                     {/* Metadata en formato tabla - Oculto en mobile */}
-                    <div className="hidden lg:block space-y-2 text-lg">
-                      <div className="flex border-b border-gray-300 py-2">
+                    <div className="hidden lg:block space-y-2 text-lg text-white">
+                      <div className="flex border-b border-white/30 py-2">
                         <span className="font-semibold w-48">Performing Group:</span>
                         <span className="font-normal">{work.performingGroup}</span>
                       </div>
-                      <div className="flex border-b border-gray-300 py-2">
+                      <div className="flex border-b border-white/30 py-2">
                         <span className="font-semibold w-48">Genre:</span>
                         <span className="font-normal">{work.genre}</span>
                       </div>
-                      <div className="flex border-b border-gray-300 py-2">
+                      <div className="flex border-b border-white/30 py-2">
                         <span className="font-semibold w-48">Status:</span>
                         <span className="font-normal">{work.status}</span>
                       </div>
@@ -413,14 +418,14 @@ export default function Works() {
 
                   {/* COLUMNA CENTRAL - Imagen con overlay */}
                   <div className="lg:col-span-5 relative order-1 lg:order-2">
-                    <a 
-                      href={work.url} 
-                      target="_blank" 
+                    <a
+                      href={work.url}
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="block relative aspect-[4/3] lg:aspect-[4/5] overflow-hidden cursor-pointer"
                     >
                       {/* Imagen de fondo */}
-                      <div className="relative w-full h-full bg-white border border-black">
+                      <div className="relative w-full h-full bg-white border border-white/30">
                         <Image
                           src={work.image}
                           alt={work.title}
@@ -432,12 +437,12 @@ export default function Works() {
                           }}
                         />
                       </div>
-                      
+
                       {/* Overlay con marquee "View More" */}
                       <div className="absolute inset-0 flex items-center justify-center bg-black/10">
                         <div className="marquee-container w-full">
-                          <div className="marquee-text text-black text-2xl font-semibold">
-                            View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • 
+                          <div className="marquee-text text-white text-2xl font-semibold">
+                            View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More •
                           </div>
                         </div>
                       </div>
@@ -447,22 +452,22 @@ export default function Works() {
                   {/* COLUMNA DERECHA - Lista de items - Oculta en mobile */}
                   <div className="hidden lg:block lg:col-span-3 order-3">
                     {/* Header de la lista */}
-                    <a 
-                      href={work.url} 
-                      target="_blank" 
+                    <a
+                      href={work.url}
+                      target="_blank"
                       rel="noopener noreferrer"
-                      className="flex justify-between items-center mb-4 pb-4 border-b border-black cursor-pointer hover:opacity-70 transition-opacity"
+                      className="flex justify-between items-center mb-4 pb-4 border-b border-white/30 cursor-pointer hover:opacity-70 transition-opacity text-white"
                     >
                       <span className="text-xl font-semibold">View More</span>
                       <span className="text-2xl">→</span>
                     </a>
-                    
+
                     {/* Lista de items con líneas separadoras */}
                     <div className="space-y-0">
                       {work.listItems.map((item, index) => (
                         <div
                           key={index}
-                          className="border-b border-black py-8 first:pt-0"
+                          className="border-b border-white/30 py-8 first:pt-0 text-white"
                         >
                           <span className="text-lg">{item}</span>
                         </div>

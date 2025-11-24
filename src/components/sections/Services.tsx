@@ -1,334 +1,276 @@
 'use client';
-import { useGSAP } from '@gsap/react';
-import { gsap, ScrollTrigger } from '@/lib/gsap';
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
+import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
+import ColorizedTitle from '@/components/ui/ColorizedTitle';
 
-// Contenido de las cards
-const serviceCards = [
+const services = [
   {
-    id: 1,
-    title: 'Contenido que Impacta',
-    text: 'Creamos narrativas imposibles de olvidar. Estrategia y creatividad que hacen destacar tu marca en un mercado saturado. Transformamos ideas complejas en mensajes claros y poderosos que resuenan con tu audiencia. Cada palabra, cada imagen, cada elemento visual está cuidadosamente diseñado para generar impacto y dejar una huella duradera en quienes interactúan con tu marca.',
-    keyword: 'Storytelling',
-    bgColor: 'bg-white',
+    title: 'Desarrollo Web',
+    secondaryTitle: 'Artesanía Digital',
+    description: 'Sitios web únicos y artesanales, construidos desde cero. No usamos plantillas, creamos experiencias a medida.',
+    color: 'bg-[#FF6B35]', // Orange
+    textColor: 'text-white',
+    flipDirection: 'left',
+    mainTitlePosition: { top: '15%', left: '10%' },
+    contentPosition: { bottom: '15%', right: '10%', textAlign: 'right' as const, alignItems: 'flex-end' },
+    blocks: [
+      {
+        className: 'w-[200px] h-[200px] md:w-[300px] md:h-[300px] border border-black bg-white transition-colors duration-300 hover:bg-[#0066FF]',
+        style: { top: '10%', right: '15%' }
+      },
+      {
+        className: 'w-[150px] h-[250px] border border-black bg-white transition-colors duration-300 hover:bg-[#00C896]',
+        style: { bottom: '20%', left: '15%' }
+      }
+    ]
   },
   {
-    id: 2,
-    title: 'Diseño que Define',
-    text: 'Identidades de marca distintivas y memorables que elevan tu presencia y te diferencian de la competencia desde el primer contacto. Desarrollamos sistemas visuales completos que comunican tu esencia de manera coherente y poderosa. Cada detalle, desde la tipografía hasta la paleta de colores, está pensado para construir una identidad única que refleje tus valores y conecte emocionalmente con tu público objetivo.',
-    keyword: 'Branding',
-    bgColor: 'bg-white',
+    title: 'Diseño UI/UX',
+    secondaryTitle: 'Experiencia de Usuario',
+    description: 'Interfaces intuitivas que cautivan. Diseñamos pensando en las personas, no solo en los píxeles.',
+    color: 'bg-[#0066FF]', // Blue
+    textColor: 'text-white',
+    flipDirection: 'right',
+    mainTitlePosition: { bottom: '20%', left: '10%' },
+    contentPosition: { top: '20%', right: '10%', textAlign: 'right' as const, alignItems: 'flex-end' },
+    blocks: [
+      {
+        className: 'w-[350px] h-[150px] border border-black bg-white transition-colors duration-300 hover:bg-[#FF6B35]',
+        style: { top: '15%', left: '10%' }
+      },
+      {
+        className: 'w-[180px] h-[180px] border border-black bg-white transition-colors duration-300 hover:bg-[#00C896]',
+        style: { bottom: '10%', right: '30%' }
+      }
+    ]
   },
   {
-    id: 3,
-    title: 'Experiencias que Conectan',
-    text: 'De la estrategia a la ejecución, diseñamos experiencias audaces que amplifican tu visibilidad y forjan conexiones profundas con tu audiencia. Creamos interfaces intuitivas y funcionales que guían a los usuarios de manera natural, transformando cada interacción en una oportunidad de engagement. Nuestro enfoque combina diseño centrado en el usuario con innovación tecnológica para construir experiencias digitales que no solo funcionan, sino que inspiran y generan resultados tangibles.',
-    keyword: 'Experience',
-    bgColor: 'bg-white',
-  },
+    title: 'SEO & Performance',
+    secondaryTitle: 'Crecimiento Orgánico',
+    description: 'Optimizamos cada línea de código. Velocidad y visibilidad para que tu negocio destaque en la red.',
+    color: 'bg-[#00C896]', // Green
+    textColor: 'text-black',
+    flipDirection: 'none',
+    mainTitlePosition: { top: '15%', right: '10%', textAlign: 'right' as const },
+    contentPosition: { bottom: '20%', left: '10%', textAlign: 'left' as const, alignItems: 'flex-start' },
+    blocks: [
+      {
+        className: 'w-[250px] h-[250px] border border-black bg-white transition-colors duration-300 hover:bg-[#0066FF]',
+        style: { top: '30%', left: '20%' }
+      },
+      {
+        className: 'w-[120px] h-[300px] border border-black bg-white transition-colors duration-300 hover:bg-[#FF6B35]',
+        style: { top: '10%', right: '30%' }
+      }
+    ]
+  }
 ];
 
+function Card({
+  i,
+  service,
+  progress,
+  range,
+  targetScale
+}: {
+  i: number;
+  service: typeof services[0];
+  progress: MotionValue<number>;
+  range: [number, number];
+  targetScale: number;
+}) {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start end', 'start start']
+  });
+
+  const start = i * 0.25;
+  const end = start + 0.25;
+  const exitStart = end;
+  const exitEnd = exitStart + 0.2;
+
+  const y = useTransform(
+    progress,
+    [start, start + 0.1],
+    ['100vh', '0vh']
+  );
+
+  const scale = useTransform(
+    progress,
+    [exitStart, exitEnd],
+    [1, 0.8]
+  );
+
+  const rotateY = useTransform(
+    progress,
+    [exitStart, exitEnd],
+    [0, service.flipDirection === 'left' ? -15 : service.flipDirection === 'right' ? 15 : 0]
+  );
+
+  const x = useTransform(
+    progress,
+    [exitStart, exitEnd],
+    ['0%', service.flipDirection === 'left' ? '-20%' : service.flipDirection === 'right' ? '20%' : '0%']
+  );
+
+  const isLast = i === services.length - 1;
+  const finalScale = isLast ? 1 : scale;
+  const finalRotateY = isLast ? 0 : rotateY;
+  const finalX = isLast ? '0%' : x;
+
+  return (
+    <motion.div
+      style={{
+        y,
+        scale: finalScale,
+        rotateY: finalRotateY,
+        x: finalX,
+        zIndex: i + 10,
+        boxShadow: '4px 4px 0px 0px rgba(0, 0, 0, 0.2), -4px -4px 0px 0px rgba(0, 0, 0, 0.2), 8px 8px 0px 0px rgba(0, 0, 0, 0.1), -8px -8px 0px 0px rgba(0, 0, 0, 0.1), 12px 12px 0px 0px rgba(0, 0, 0, 0.05), -12px -12px 0px 0px rgba(0, 0, 0, 0.05)'
+      }}
+      className={`absolute top-0 w-full h-full border border-black ${service.color} origin-bottom overflow-hidden`}
+    >
+      {/* Decorative Blocks */}
+      {service.blocks.map((block, idx) => (
+        <div
+          key={idx}
+          className={`absolute z-0 ${block.className}`}
+          style={{
+            ...block.style,
+            boxShadow: '2px 2px 0px 0px rgba(0, 0, 0, 0.1)'
+          }}
+        />
+      ))}
+
+      {/* Main Title */}
+      <div
+        className="absolute z-20 max-w-2xl"
+        style={service.mainTitlePosition}
+      >
+        <h3 className={`text-6xl md:text-8xl font-bold ${service.textColor} tracking-tight`}>
+          {service.title}
+        </h3>
+      </div>
+
+      {/* Secondary Title + Content */}
+      <div
+        className="absolute z-20 max-w-xl flex flex-col"
+        style={service.contentPosition}
+      >
+        <h4 className={`text-3xl md:text-4xl font-bold mb-6 ${service.textColor} opacity-90`}>
+          {service.secondaryTitle}
+        </h4>
+        <p className={`text-xl md:text-2xl ${service.textColor} font-light leading-relaxed`}>
+          {service.description}
+        </p>
+      </div>
+    </motion.div>
+  );
+}
+
+const COLORS = ['#0066FF', '#FF6B35', '#00C896'];
+
 export default function Services() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const cardsContainerRef = useRef<HTMLDivElement>(null);
-  const [isReducedMotion, setIsReducedMotion] = useState(false);
+  const containerRef = useRef(null);
+  const [lineColors, setLineColors] = useState<string[]>([]);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-      setIsReducedMotion(mediaQuery.matches);
-      
-      const handleMotionChange = (e: MediaQueryListEvent) => {
-        setIsReducedMotion(e.matches);
-      };
-      
-      mediaQuery.addEventListener('change', handleMotionChange);
-      
-      return () => {
-        mediaQuery.removeEventListener('change', handleMotionChange);
-      };
-    }
+    setLineColors([
+      COLORS[Math.floor(Math.random() * COLORS.length)],
+      COLORS[Math.floor(Math.random() * COLORS.length)],
+      COLORS[Math.floor(Math.random() * COLORS.length)],
+      COLORS[Math.floor(Math.random() * COLORS.length)],
+      COLORS[Math.floor(Math.random() * COLORS.length)],
+      COLORS[Math.floor(Math.random() * COLORS.length)],
+      COLORS[Math.floor(Math.random() * COLORS.length)],
+      COLORS[Math.floor(Math.random() * COLORS.length)],
+    ]);
   }, []);
 
-  useGSAP(() => {
-    if (!containerRef.current || !cardsContainerRef.current) return;
-    
-    let scrollTriggers: ScrollTrigger[] = [];
-    let timeoutId: NodeJS.Timeout;
-    
-    timeoutId = setTimeout(() => {
-      const cards = cardsContainerRef.current?.querySelectorAll('.service-card');
-      if (!cards || cards.length === 0) return;
-      
-      if (isReducedMotion) {
-        cards.forEach((card) => {
-          const cardElement = card as HTMLElement;
-          gsap.set(cardElement, { opacity: 1, position: 'relative', transform: 'none' });
-        });
-        return;
-      }
-
-      const totalCards = cards.length;
-      const viewportHeight = window.innerHeight;
-      
-      // Altura del scroll necesario para completar todas las animaciones
-      // Con 3 cards, necesitamos 2 transiciones (card1->card2 y card2->card3)
-      const scrollHeight = viewportHeight * (totalCards - 1); // Espacio de scroll para las animaciones
-      
-      // El contenedor de cards ocupa solo 100vh
-      if (cardsContainerRef.current) {
-        gsap.set(cardsContainerRef.current, { 
-          height: viewportHeight,
-          width: '100%',
-          overflow: 'hidden',
-        });
-      }
-
-      // Configurar todas las cards
-      cards.forEach((card, index) => {
-        const cardElement = card as HTMLElement;
-        gsap.set(cardElement, {
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          zIndex: index + 1,
-          opacity: 1,
-          y: index === 0 ? 0 : viewportHeight, // Primera card visible, otras desde abajo
-          scale: 1,
-          rotation: 0,
-          transformOrigin: 'center center',
-        });
-      });
-
-      const firstCard = cards[0] as HTMLElement;
-      const secondCard = cards[1] as HTMLElement;
-      const thirdCard = cards[2] as HTMLElement;
-
-      // Crear ScrollTrigger único para todas las cards con pin
-      // El pin fija la sección mientras se hace scroll
-      const trigger = ScrollTrigger.create({
-        trigger: containerRef.current,
-        start: `top top`,
-        end: `+=${scrollHeight}`,
-        pin: true, // Fija la sección durante el scroll
-        pinSpacing: true, // Añade espacio para el pin
-        scrub: 1,
-        onUpdate: (self) => {
-          const scrollProgress = self.progress;
-          
-          // Dividir el scroll en fases según el número de cards
-          // Fase 1 (0-0.5): Primera card se empequeñece/rota, segunda card sube
-          // Fase 2 (0.5-1): Segunda card se empequeñece/rota, tercera card sube
-          
-          if (scrollProgress <= 0.5) {
-            // Primera fase: transición de card 1 a card 2
-            const phaseProgress = scrollProgress / 0.5; // 0 a 1 en la primera mitad
-            
-            // Primera card: se empequeñece gradualmente hasta 80% y gira hacia la izquierda hasta 30 grados
-            const scale = 1 - (phaseProgress * 0.2); // Se reduce hasta 80% (1 - 0.2 = 0.8)
-            const rotation = -phaseProgress * 30; // Gira hacia la izquierda hasta -30 grados
-            
-            gsap.to(firstCard, {
-              scale: scale,
-              rotation: rotation,
-              duration: 0.1,
-            });
-            
-            // Segunda card: sube desde abajo
-            const yOffset = viewportHeight * (1 - phaseProgress);
-            gsap.to(secondCard, {
-              y: yOffset,
-              duration: 0.1,
-            });
-            
-            // Tercera card: se mantiene abajo
-            gsap.set(thirdCard, { y: viewportHeight });
-          } else {
-            // Segunda fase: transición de card 2 a card 3
-            const phaseProgress = (scrollProgress - 0.5) / 0.5; // 0 a 1 en la segunda mitad
-            
-            // Primera card: mantener estado final (80% y -30 grados)
-            gsap.set(firstCard, { scale: 0.8, rotation: -30 });
-            
-            // Segunda card: se empequeñece gradualmente hasta 80% y gira hacia la derecha hasta 30 grados
-            const scale = 1 - (phaseProgress * 0.2); // Se reduce hasta 80%
-            const rotation = phaseProgress * 30; // Gira hacia la derecha hasta +30 grados
-            
-            gsap.to(secondCard, {
-              scale: scale,
-              rotation: rotation,
-              duration: 0.1,
-            });
-            
-            // Tercera card: sube desde abajo
-            const yOffset = viewportHeight * (1 - phaseProgress);
-            gsap.to(thirdCard, {
-              y: yOffset,
-              duration: 0.1,
-            });
-          }
-        },
-      });
-      
-      scrollTriggers.push(trigger);
-    }, 100);
-
-    return () => {
-      clearTimeout(timeoutId);
-      scrollTriggers.forEach(trigger => trigger.kill());
-      ScrollTrigger.getAll().forEach(trigger => {
-        if (trigger.vars.trigger === cardsContainerRef.current) {
-          trigger.kill();
-        }
-      });
+  const getLineStyle = (index: number) => {
+    return {
+      borderColor: lineColors[index] || '#000000',
+      transition: 'border-color 0.5s ease'
     };
-  }, { scope: containerRef, dependencies: [isReducedMotion] });
+  };
 
-return (
-    <section id="services" className="relative bg-white overflow-hidden">
-      
-      <div ref={containerRef} className="relative w-full">
-        {/* Contenedor de cards - ocupa solo 100vh */}
-        <div 
-          ref={cardsContainerRef}
-          className="relative w-full"
-          style={{ height: '100vh' }}
-        >
-          {serviceCards.map((card, index) => {
-            let cardStyle: React.CSSProperties;
-            if (index === 0) {
-              cardStyle = { 
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                zIndex: 1,
-                opacity: 1,
-                transform: 'none'
-              };
-            } else {
-              cardStyle = { 
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                zIndex: index + 1,
-                opacity: 1,
-                transform: `translateY(100%)`
-              };
-            }
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end end']
+  });
 
-            // Mobile-first card designs with unique layouts
-            if (index === 0) { // Card 1: Title, Image, Keyword, Text
-              return (
-                <div
-                  key={card.id}
-                  className={`service-card ${card.bgColor} w-full p-6 md:p-12`}
-                  style={{
-                    ...cardStyle,
-                    boxShadow: '4px 4px 0px 0px rgba(0, 0, 0, 0.2), -4px -4px 0px 0px rgba(0, 0, 0, 0.2), 8px 8px 0px 0px rgba(0, 0, 0, 0.1), -8px -8px 0px 0px rgba(0, 0, 0, 0.1), 12px 12px 0px 0px rgba(0, 0, 0, 0.05), -12px -12px 0px 0px rgba(0, 0, 0, 0.05)',
-                  }}
-                >
-                  <div className="h-full w-full flex flex-col md:flex-row">
-                    <div className="w-full md:w-1/3 flex flex-col justify-center items-center text-center md:text-left md:items-start p-4">
-                      <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight">
-                        {card.title}
-                      </h2>
-                    </div>
-                    <div className="w-full md:w-1/3 flex justify-center items-center p-4">
-                      <img 
-                        src="/contenido2.svg" 
-                        alt={card.title}
-                        className="w-1/2 md:w-full h-auto object-contain"
-                        style={{ filter: 'grayscale(100%)' }}
-                      />
-                    </div>
-                    <div className="w-full md:w-1/3 flex flex-col justify-center items-center text-center p-4">
-                      <span className="text-4xl md:text-5xl font-bold text-black opacity-50 mb-4">
-                        {card.keyword}
-                      </span>
-                      <p className="text-base md:text-lg text-gray-700 font-light leading-relaxed">
-                        {card.text}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              );
-            }
+  return (
+    <section ref={containerRef} id="services" className="relative h-[400vh] bg-white">
+      <div className="sticky top-0 h-screen overflow-hidden flex flex-col perspective-1000">
 
-            if (index === 1) { // Card 2: Title, Keyword, Image, Text
-              return (
-                <div
-                  key={card.id}
-                  className={`service-card ${card.bgColor} w-full p-6 md:p-12`}
-                  style={{
-                    ...cardStyle,
-                    boxShadow: '4px 4px 0px 0px rgba(0, 0, 0, 0.2), -4px -4px 0px 0px rgba(0, 0, 0, 0.2), 8px 8px 0px 0px rgba(0, 0, 0, 0.1), -8px -8px 0px 0px rgba(0, 0, 0, 0.1), 12px 12px 0px 0px rgba(0, 0, 0, 0.05), -12px -12px 0px 0px rgba(0, 0, 0, 0.05)',
-                  }}
-                >
-                  <div className="h-full w-full flex flex-col md:flex-row">
-                    <div className="w-full md:w-1/2 flex flex-col justify-center items-center text-center md:text-left md:items-start p-4">
-                      <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight mb-4">
-                        {card.title}
-                      </h2>
-                      <span className="text-4xl md:text-5xl font-bold text-black opacity-50">
-                        {card.keyword}
-                      </span>
-                    </div>
-                    <div className="w-full md:w-1/2 flex flex-col justify-center items-center p-4">
-                      <img 
-                        src="/undraw_making-art_c05m.svg" 
-                        alt={card.title}
-                        className="w-1/2 md:w-full h-auto object-contain mb-4"
-                        style={{ filter: 'grayscale(100%)' }}
-                      />
-                       <p className="text-base md:text-lg text-gray-700 font-light leading-relaxed text-center">
-                        {card.text}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              );
-            }
+        {/* Header Section - Staggered Title */}
+        {/* Changed z-index to 0 so cards (z-10+) slide OVER it */}
+        <div className="absolute top-0 left-0 w-full h-full z-0 flex flex-col pointer-events-none">
+          {/* Row 1: NUESTROS */}
+          <div
+            className="relative w-full h-[12.5%] border-b flex items-center px-6 md:px-12 bg-white"
+            style={getLineStyle(0)}
+          >
+            <ColorizedTitle
+              text="NUESTROS"
+              tag="h2"
+              className="text-5xl md:text-7xl font-bold text-black leading-none tracking-tighter"
+            />
+          </div>
 
-            // Card 3: Title, Text, Image, Keyword
-            return (
-              <div
-                key={card.id}
-                className={`service-card ${card.bgColor} w-full p-6 md:p-12`}
-                style={{
-                  ...cardStyle,
-                  boxShadow: '4px 4px 0px 0px rgba(0, 0, 0, 0.2), -4px -4px 0px 0px rgba(0, 0, 0, 0.2), 8px 8px 0px 0px rgba(0, 0, 0, 0.1), -8px -8px 0px 0px rgba(0, 0, 0, 0.1), 12px 12px 0px 0px rgba(0, 0, 0, 0.05), -12px -12px 0px 0px rgba(0, 0, 0, 0.05)',
-                }}
-              >
-                <div className="h-full w-full flex flex-col md:flex-row">
-                  <div className="w-full md:w-2/3 flex flex-col justify-center p-4">
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight mb-4 text-center md:text-left">
-                      {card.title}
-                    </h2>
-                    <p className="text-base md:text-lg text-gray-700 font-light leading-relaxed text-center md:text-left">
-                      {card.text}
-                    </p>
-                  </div>
-                  <div className="w-full md:w-1/3 flex flex-col justify-center items-center p-4">
-                    <img 
-                      src="/RV.svg" 
-                      alt={card.title}
-                      className="w-1/2 md:w-full h-auto object-contain mb-4"
-                      style={{ filter: 'grayscale(100%)' }}
-                    />
-                    <span className="text-4xl md:text-5xl font-bold text-black opacity-50">
-                      {card.keyword}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+          {/* Row 2: SERVICIOS */}
+          <div
+            className="relative w-full h-[12.5%] border-b flex items-center justify-end px-6 md:px-12 bg-white"
+            style={getLineStyle(1)}
+          >
+            <ColorizedTitle
+              text="SERVICIOS"
+              tag="h2"
+              className="text-5xl md:text-7xl font-bold text-black leading-none tracking-tighter"
+            />
+          </div>
+
+          {/* Row 3: Subtitle */}
+          <div
+            className="relative w-full h-[12.5%] border-b flex items-center justify-center bg-white"
+            style={getLineStyle(2)}
+          >
+            <p className="text-body-lg md:text-xl text-gray-600 font-light">
+              Soluciones digitales cultivadas con pasión y precisión.
+            </p>
+          </div>
+
+          {/* Row 4: Empty Line */}
+          <div className="relative w-full h-[12.5%] border-b bg-white" style={getLineStyle(3)} />
+
+          {/* Row 5: Empty Line */}
+          <div className="relative w-full h-[12.5%] border-b bg-white" style={getLineStyle(4)} />
+
+          {/* Row 6: Empty Line */}
+          <div className="relative w-full h-[12.5%] border-b bg-white" style={getLineStyle(5)} />
+
+          {/* Row 7: Empty Line */}
+          <div className="relative w-full h-[12.5%] border-b bg-white" style={getLineStyle(6)} />
+
+          {/* Row 8: Empty Line */}
+          <div className="relative w-full h-[12.5%] border-b bg-white" style={getLineStyle(7)} />
+        </div>
+
+        {/* Cards Container */}
+        {/* Cards need higher z-index to slide OVER the header */}
+        <div className="relative w-full h-full flex items-center justify-center perspective-[1200px] z-10 pointer-events-none">
+          {services.map((service, i) => (
+            <div key={i} className="pointer-events-auto w-full h-full absolute top-0 left-0 flex items-center justify-center">
+              <Card
+                i={i}
+                service={service}
+                progress={scrollYProgress}
+                range={[i * 0.25, 1]}
+                targetScale={1 - (services.length - i) * 0.05}
+              />
+            </div>
+          ))}
         </div>
       </div>
     </section>

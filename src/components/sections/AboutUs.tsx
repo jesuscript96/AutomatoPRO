@@ -5,8 +5,8 @@ export default function AboutUs() {
 
   return (
     <section id="about" className="relative bg-white py-20">
-      
-      <div 
+
+      <div
         className="container mx-auto px-6 py-20 relative border border-black"
         style={{
           boxShadow: '4px 4px 0px 0px rgba(0, 0, 0, 0.2), -4px -4px 0px 0px rgba(0, 0, 0, 0.2), 8px 8px 0px 0px rgba(0, 0, 0, 0.1), -8px -8px 0px 0px rgba(0, 0, 0, 0.1), 12px 12px 0px 0px rgba(0, 0, 0, 0.05), -12px -12px 0px 0px rgba(0, 0, 0, 0.05)'
@@ -14,8 +14,8 @@ export default function AboutUs() {
       >
         {/* Bloques de colores */}
         {/* Bloque con imagen (Desktop) */}
-        <div 
-          className="hidden md:block absolute w-[280px] h-[280px] md:w-[320px] md:h-[320px] border border-black z-10"
+        <div
+          className="hidden md:block absolute w-[280px] h-[280px] md:w-[320px] md:h-[320px] border border-black z-10 transition-colors duration-300 hover:bg-[#FF6B35]"
           style={{
             top: '15%',
             right: '10%',
@@ -26,10 +26,10 @@ export default function AboutUs() {
             backgroundRepeat: 'no-repeat',
           }}
         />
-        
+
         {/* Bloque transparente (Mobile) */}
-        <div 
-          className="md:hidden absolute w-[200px] h-[200px] border border-black z-10"
+        <div
+          className="md:hidden absolute w-[200px] h-[200px] border border-black z-10 transition-colors duration-300 hover:bg-[#0066FF]"
           style={{
             top: '10%',
             right: '5%',
@@ -37,20 +37,20 @@ export default function AboutUs() {
             backgroundColor: 'transparent'
           }}
         />
-        
+
         {/* Bloque verde - Rectángulo horizontal */}
-        <div 
-          className="absolute w-[300px] h-[150px] md:w-[360px] md:h-[180px] bg-white border border-black z-10"
+        <div
+          className="absolute w-[300px] h-[150px] md:w-[360px] md:h-[180px] bg-white border border-black z-10 transition-colors duration-300 hover:bg-[#00C896]"
           style={{
             top: '50%',
             left: '5%',
             boxShadow: '2px 2px 0px 0px rgba(0, 0, 0, 0.1), 4px 4px 0px 0px rgba(0, 0, 0, 0.05)',
           }}
         />
-        
+
         {/* Bloque naranja - Rectángulo vertical */}
-        <div 
-          className="absolute w-[150px] h-[300px] md:w-[180px] md:h-[360px] bg-white border border-black z-10"
+        <div
+          className="absolute w-[150px] h-[300px] md:w-[180px] md:h-[360px] bg-white border border-black z-10 transition-colors duration-300 hover:bg-[#0066FF]"
           style={{
             bottom: '20%',
             right: '20%',

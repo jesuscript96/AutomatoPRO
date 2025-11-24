@@ -1,37 +1,75 @@
 'use client';
 import { motion } from 'framer-motion';
 import TomateModel from '@/components/3D/TomateModel';
+import ColorizedTitle from '@/components/ui/ColorizedTitle';
+import { useEffect, useState } from 'react';
+
+const COLORS = ['#0066FF', '#FF6B35', '#00C896'];
 
 export default function Contact() {
+  const [lineColors, setLineColors] = useState<string[]>([]);
+
+  useEffect(() => {
+    // Generate random colors for lines on mount
+    setLineColors([
+      COLORS[Math.floor(Math.random() * COLORS.length)],
+      COLORS[Math.floor(Math.random() * COLORS.length)],
+      COLORS[Math.floor(Math.random() * COLORS.length)],
+      COLORS[Math.floor(Math.random() * COLORS.length)],
+      COLORS[Math.floor(Math.random() * COLORS.length)],
+      COLORS[Math.floor(Math.random() * COLORS.length)],
+      COLORS[Math.floor(Math.random() * COLORS.length)],
+      COLORS[Math.floor(Math.random() * COLORS.length)],
+    ]);
+  }, []);
+
+  const getLineStyle = (index: number) => {
+    return {
+      borderColor: lineColors[index] || '#000000', // Default to black
+      transition: 'border-color 0.5s ease'
+    };
+  };
+
   return (
     <section id="contact" className="relative bg-white pb-12 md:pb-16">
       <div className="relative w-full min-h-screen flex flex-col">
-        
+
         {/* Fila 1 - Vacía */}
-        <div className="relative w-full h-[calc(100vh/9)] border-b border-black"></div>
+        <div
+          className="relative w-full h-[calc(100vh/9)] border-b"
+          style={getLineStyle(0)}
+        ></div>
 
         {/* Fila 2 - INICIEMOS */}
-        <div className="relative w-full h-[calc(100vh/9)] border-b border-black flex items-center px-[20%]">
+        <div
+          className="relative w-full h-[calc(100vh/9)] border-b flex items-center px-[20%]"
+          style={getLineStyle(1)}
+        >
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="text-left relative z-30"
           >
-            <h1 className="uppercase text-[1.8rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.5rem] font-normal text-black leading-none">
-              INICIEMOS
-            </h1>
+            <ColorizedTitle
+              text="INICIEMOS"
+              tag="h1"
+              className="uppercase text-[1.8rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.5rem] font-normal text-black leading-none"
+            />
           </motion.div>
         </div>
 
         {/* Fila 3 - Bloque y "TU" */}
-        <div className="relative w-full h-[calc(100vh/9)] border-b border-black flex items-center justify-between px-[20%]">
+        <div
+          className="relative w-full h-[calc(100vh/9)] border-b flex items-center justify-between px-[20%]"
+          style={getLineStyle(2)}
+        >
           <div className="flex-1"></div>
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] md:w-[280px] md:h-[280px] lg:w-[320px] lg:h-[320px] xl:w-[360px] xl:h-[360px] bg-white border border-black z-20 overflow-hidden"
+            className="w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] md:w-[280px] md:h-[280px] lg:w-[320px] lg:h-[320px] xl:w-[360px] xl:h-[360px] bg-white border border-black z-20 overflow-hidden transition-colors duration-300 hover:bg-[#00C896]"
             style={{
               boxShadow: '2px 2px 0px 0px rgba(0, 0, 0, 0.1), 4px 4px 0px 0px rgba(0, 0, 0, 0.05)',
             }}
@@ -44,36 +82,49 @@ export default function Contact() {
             transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="flex-1 flex justify-end relative z-30"
           >
-            <h1 className="uppercase text-[1.8rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.5rem] font-bold text-black leading-none text-right">
-              TU
-            </h1>
+            <ColorizedTitle
+              text="TU"
+              tag="h1"
+              className="uppercase text-[1.8rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.5rem] font-bold text-black leading-none text-right"
+            />
           </motion.div>
         </div>
 
         {/* Fila 4 - "PROYECTO" */}
-        <div className="relative w-full h-[calc(100vh/9)] border-b border-black flex items-center justify-end px-[20%]">
+        <div
+          className="relative w-full h-[calc(100vh/9)] border-b flex items-center justify-end px-[20%]"
+          style={getLineStyle(3)}
+        >
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
             className="text-right relative z-30"
           >
-            <h1 className="uppercase text-[1.8rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.5rem] font-bold text-black leading-none">
-              PROYECTO
-            </h1>
+            <ColorizedTitle
+              text="PROYECTO"
+              tag="h1"
+              className="uppercase text-[1.8rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.5rem] font-bold text-black leading-none"
+            />
           </motion.div>
         </div>
 
         {/* Fila 5 - Vacía */}
-        <div className="relative w-full h-[calc(100vh/9)] border-b border-black"></div>
+        <div
+          className="relative w-full h-[calc(100vh/9)] border-b"
+          style={getLineStyle(4)}
+        ></div>
 
         {/* Fila 6 - Bloque y primera parte del subtítulo */}
-        <div className="relative w-full h-[calc(100vh/9)] border-b border-black flex items-center px-[20%]">
+        <div
+          className="relative w-full h-[calc(100vh/9)] border-b flex items-center px-[20%]"
+          style={getLineStyle(5)}
+        >
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] md:w-[260px] md:h-[260px] lg:w-[300px] lg:h-[300px] bg-white border border-black z-20 mr-8"
+            className="w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] md:w-[260px] md:h-[260px] lg:w-[300px] lg:h-[300px] bg-white border border-black z-20 mr-8 transition-colors duration-300 hover:bg-[#FF6B35]"
             style={{
               boxShadow: '2px 2px 0px 0px rgba(0, 0, 0, 0.1), 4px 4px 0px 0px rgba(0, 0, 0, 0.05)',
             }}
@@ -91,7 +142,10 @@ export default function Contact() {
         </div>
 
         {/* Fila 7 - Segunda parte del subtítulo */}
-        <div className="relative w-full h-[calc(100vh/9)] border-b border-black flex items-center px-[20%]">
+        <div
+          className="relative w-full h-[calc(100vh/9)] border-b flex items-center px-[20%]"
+          style={getLineStyle(6)}
+        >
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -105,7 +159,10 @@ export default function Contact() {
         </div>
 
         {/* Fila 8 - Vacía */}
-        <div className="relative w-full h-[calc(100vh/9)] border-b border-black"></div>
+        <div
+          className="relative w-full h-[calc(100vh/9)] border-b"
+          style={getLineStyle(7)}
+        ></div>
 
         {/* Fila 9 - Información de contacto */}
         <div className="relative w-full h-[calc(100vh/9)] flex items-center px-6 md:px-8">
