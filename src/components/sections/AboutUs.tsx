@@ -1,13 +1,14 @@
 'use client';
 import FadeIn from '@/components/animations/FadeIn';
+import ColoredLinesBackground from '@/components/ui/ColoredLinesBackground';
 
 export default function AboutUs() {
 
   return (
-    <section id="about" className="relative bg-white py-20">
-
+    <section id="about" className="relative bg-white py-20 overflow-hidden">
+      <ColoredLinesBackground />
       <div
-        className="container mx-auto px-6 py-20 relative border border-black"
+        className="container mx-auto px-6 py-20 relative border border-black z-10 bg-white"
         style={{
           boxShadow: '4px 4px 0px 0px rgba(0, 0, 0, 0.2), -4px -4px 0px 0px rgba(0, 0, 0, 0.2), 8px 8px 0px 0px rgba(0, 0, 0, 0.1), -8px -8px 0px 0px rgba(0, 0, 0, 0.1), 12px 12px 0px 0px rgba(0, 0, 0, 0.05), -12px -12px 0px 0px rgba(0, 0, 0, 0.05)'
         }}

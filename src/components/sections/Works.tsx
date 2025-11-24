@@ -4,6 +4,7 @@ import { gsap, ScrollTrigger } from '@/lib/gsap';
 import { useRef } from 'react';
 import Image from 'next/image';
 import ColorizedTitle from '@/components/ui/ColorizedTitle';
+import ColoredLinesBackground from '@/components/ui/ColoredLinesBackground';
 
 interface Work {
   id: number;
@@ -334,15 +335,26 @@ export default function Works() {
   return (
     <section id="works" className="relative bg-white">
 
-      <div ref={containerRef} className="projects-container">
+      <div ref={containerRef} className="projects-container relative">
+        <ColoredLinesBackground className="z-0" />
+
         {/* Header de la sección */}
-        <div className="container mx-auto px-8 py-12">
-          <div ref={titleRef as any}>
-            <ColorizedTitle
-              text="Nuestros Trabajos"
-              tag="h2"
-              className="text-h1 font-bold text-black mb-6"
-            />
+        <div className="container mx-auto px-8 py-12 relative z-10">
+          <div ref={titleRef as any} className="flex flex-col w-full">
+            <div className="text-left">
+              <ColorizedTitle
+                text="NUESTROS"
+                tag="h2"
+                className="uppercase text-[2.34rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.5rem] font-normal text-black leading-none"
+              />
+            </div>
+            <div className="text-right">
+              <ColorizedTitle
+                text="TRABAJOS"
+                tag="h2"
+                className="uppercase text-[2.34rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.5rem] font-medium text-black leading-none"
+              />
+            </div>
           </div>
         </div>
 
