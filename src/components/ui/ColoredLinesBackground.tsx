@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 
-const COLORS = ['#0066FF', '#FF6B35', '#00C896'];
+const COLORS = ['#F5CC00', '#753B67', '#35A09E'];
 
 interface ColoredLinesBackgroundProps {
     lineCount?: number;

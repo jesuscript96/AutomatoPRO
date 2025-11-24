@@ -4,7 +4,7 @@ import TomateModel from '@/components/3D/TomateModel';
 import ColorizedTitle from '@/components/ui/ColorizedTitle';
 import { useEffect, useState } from 'react';
 
-const COLORS = ['#0066FF', '#FF6B35', '#00C896'];
+const COLORS = ['#F5CC00', '#753B67', '#35A09E'];
 
 export default function Contact() {
   const [lineColors, setLineColors] = useState<string[]>([]);
@@ -69,7 +69,7 @@ export default function Contact() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] md:w-[280px] md:h-[280px] lg:w-[320px] lg:h-[320px] xl:w-[360px] xl:h-[360px] bg-white border border-black z-20 overflow-hidden transition-colors duration-300 hover:bg-[#00C896]"
+            className="w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] md:w-[280px] md:h-[280px] lg:w-[320px] lg:h-[320px] xl:w-[360px] xl:h-[360px] bg-white border border-black z-20 overflow-hidden transition-colors duration-300 hover:bg-[#35A09E]"
             style={{
               boxShadow: '2px 2px 0px 0px rgba(0, 0, 0, 0.1), 4px 4px 0px 0px rgba(0, 0, 0, 0.05)',
             }}
@@ -124,7 +124,7 @@ export default function Contact() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] md:w-[260px] md:h-[260px] lg:w-[300px] lg:h-[300px] bg-white border border-black z-20 mr-8 transition-colors duration-300 hover:bg-[#FF6B35]"
+            className="w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] md:w-[260px] md:h-[260px] lg:w-[300px] lg:h-[300px] bg-white border border-black z-20 mr-8 transition-colors duration-300 hover:bg-[#753B67]"
             style={{
               boxShadow: '2px 2px 0px 0px rgba(0, 0, 0, 0.1), 4px 4px 0px 0px rgba(0, 0, 0, 0.05)',
             }}

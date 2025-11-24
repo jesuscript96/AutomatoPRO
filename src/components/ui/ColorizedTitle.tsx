@@ -8,7 +8,7 @@ interface ColorizedTitleProps {
     tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'div';
 }
 
-const COLORS = ['#0066FF', '#FF6B35', '#00C896'];
+const COLORS = ['#F5CC00', '#753B67', '#35A09E'];
 
 export default function ColorizedTitle({ text, className = '', tag = 'h1' }: ColorizedTitleProps) {
     const [mounted, setMounted] = useState(false);

@@ -18,7 +18,7 @@ interface Work {
 }
 
 // Colores de fondo en el mismo orden que las cards de Services
-const workColors = ['#0066FF', '#FF6B35', '#00C896'];
+const workColors = ['#F5CC00', '#753B67', '#35A09E'];
 
 const works: Work[] = [
   {
@@ -27,7 +27,7 @@ const works: Work[] = [
     performingGroup: 'TUILUS',
     genre: 'Moda',
     status: 'Live desde 2024',
-    image: '/TUILUS.png',
+    image: '/tuiluscopia.tiff',
     listItems: ['Catálogo de productos', 'Carrito de compra', 'Panel de admin'],
     url: 'https://tuilus.com',
   },
@@ -37,7 +37,7 @@ const works: Work[] = [
     performingGroup: 'LABORATORIO ESPERANZA',
     genre: 'Salud y Alimentación',
     status: 'Producción',
-    image: '/LAB.png',
+    image: '/yogurtbenefitslastcopia.tiff',
     listItems: ['Sistema de pagos', 'Email Mkt', 'Información médica'],
     url: 'https://laboratorioesperanza.com',
   },
@@ -47,7 +47,7 @@ const works: Work[] = [
     performingGroup: 'Designer PIPPA MORRAY',
     genre: 'Portfolio Creativo - Furniture',
     status: 'Live 2024',
-    image: '/PIPPA.png',
+    image: '/muebles.webp',
     listItems: ['Galería de proyectos', 'Sobre la diseñadora', 'Formulario de contacto'],
     url: 'https://www.pippamorraydesign.com/',
   },
@@ -66,7 +66,7 @@ export default function Works() {
     // Función para calcular y actualizar alturas
     const setupCards = () => {
       const viewportHeight = window.innerHeight;
-      const maxHeight = viewportHeight * 0.7; // 70vh máximo
+      const maxHeight = viewportHeight; // Altura completa del viewport
 
       // Calcular alturas completas de todas las cards
       const cardHeights: number[] = [];
@@ -78,7 +78,8 @@ export default function Works() {
         }
         const contentHeight = content.scrollHeight;
         const calculatedHeight = contentHeight + collapsedHeight;
-        const fullHeight = Math.min(calculatedHeight, maxHeight);
+        // Usar el máximo entre la altura calculada y el viewport para que siempre llegue al fondo
+        const fullHeight = Math.max(calculatedHeight, maxHeight);
         cardHeights.push(fullHeight);
       });
 
@@ -178,22 +179,8 @@ export default function Works() {
           }
 
           // Calcular posición bottom final para esta card
-          // Cuando esta card se expande, debe mostrarse al 100% y estar completamente visible
-          // La parte superior de la card debe coincidir con la parte superior de la pantalla
-          const viewportHeight = window.innerHeight;
-          let bottomPosition = 0;
-
-          // Posicionar la card para que su parte superior coincida con la parte superior del viewport
-          // Si la card es más alta que el viewport, posicionarla en bottom: 0 (se cortará por abajo)
-          // Si la card cabe en el viewport, posicionarla para que quepa completamente desde arriba
-          if (fullHeight >= viewportHeight) {
-            // Card más alta que el viewport: posicionarla en bottom: 0
-            bottomPosition = 0;
-          } else {
-            // Card cabe en el viewport: posicionarla para que la parte superior esté en top: 0
-            // bottomPosition = viewportHeight - fullHeight hace que la parte superior esté en top: 0
-            bottomPosition = viewportHeight - fullHeight;
-          }
+          // Las cards siempre deben extenderse hasta el fondo del viewport (bottom: 0)
+          const bottomPosition = 0;
 
           // 3. Primero empujar todas las cards anteriores hacia arriba (desde el inicio)
           // Cuando se abre una nueva card, las anteriores deben moverse fuera del viewport
@@ -391,7 +378,6 @@ export default function Works() {
               key={work.id}
               className="work-card border-t border-white/30"
               style={{
-                maxHeight: '70vh',
                 overflow: 'hidden',
                 backgroundColor: workColors[index] || '#ffffff',
                 boxShadow: '-4px -4px 0px 0px rgba(0, 0, 0, 0.2), -8px -8px 0px 0px rgba(0, 0, 0, 0.1), -12px -12px 0px 0px rgba(0, 0, 0, 0.05)',

@@ -8,18 +8,18 @@ const services = [
     title: 'Desarrollo Web',
     secondaryTitle: 'Artesanía Digital',
     description: 'Sitios web únicos y artesanales, construidos desde cero. No usamos plantillas, creamos experiencias a medida.',
-    color: 'bg-[#FF6B35]', // Orange
+    color: 'bg-[#753B67]', // Purple
     textColor: 'text-white',
     flipDirection: 'left',
     mainTitlePosition: { top: '15%', left: '10%' },
     contentPosition: { bottom: '15%', right: '10%', textAlign: 'right' as const, alignItems: 'flex-end' },
     blocks: [
       {
-        className: 'w-[200px] h-[200px] md:w-[300px] md:h-[300px] border border-black bg-white transition-colors duration-300 hover:bg-[#0066FF]',
+        className: 'w-[200px] h-[200px] md:w-[300px] md:h-[300px] border border-black bg-white transition-colors duration-300 hover:bg-[#F5CC00]',
         style: { top: '10%', right: '15%' }
       },
       {
-        className: 'w-[150px] h-[250px] border border-black bg-white transition-colors duration-300 hover:bg-[#00C896]',
+        className: 'w-[150px] h-[250px] border border-black bg-white transition-colors duration-300 hover:bg-[#35A09E]',
         style: { bottom: '20%', left: '15%' }
       }
     ]
@@ -28,18 +28,18 @@ const services = [
     title: 'Diseño UI/UX',
     secondaryTitle: 'Experiencia de Usuario',
     description: 'Interfaces intuitivas que cautivan. Diseñamos pensando en las personas, no solo en los píxeles.',
-    color: 'bg-[#0066FF]', // Blue
+    color: 'bg-[#F5CC00]', // Yellow
     textColor: 'text-white',
     flipDirection: 'right',
     mainTitlePosition: { bottom: '20%', left: '10%' },
     contentPosition: { top: '20%', right: '10%', textAlign: 'right' as const, alignItems: 'flex-end' },
     blocks: [
       {
-        className: 'w-[350px] h-[150px] border border-black bg-white transition-colors duration-300 hover:bg-[#FF6B35]',
+        className: 'w-[350px] h-[150px] border border-black bg-white transition-colors duration-300 hover:bg-[#753B67]',
         style: { top: '15%', left: '10%' }
       },
       {
-        className: 'w-[180px] h-[180px] border border-black bg-white transition-colors duration-300 hover:bg-[#00C896]',
+        className: 'w-[180px] h-[180px] border border-black bg-white transition-colors duration-300 hover:bg-[#35A09E]',
         style: { bottom: '10%', right: '30%' }
       }
     ]
@@ -48,18 +48,18 @@ const services = [
     title: 'SEO & Performance',
     secondaryTitle: 'Crecimiento Orgánico',
     description: 'Optimizamos cada línea de código. Velocidad y visibilidad para que tu negocio destaque en la red.',
-    color: 'bg-[#00C896]', // Green
+    color: 'bg-[#35A09E]', // Teal
     textColor: 'text-black',
     flipDirection: 'none',
     mainTitlePosition: { top: '15%', right: '10%', textAlign: 'right' as const },
     contentPosition: { bottom: '20%', left: '10%', textAlign: 'left' as const, alignItems: 'flex-start' },
     blocks: [
       {
-        className: 'w-[250px] h-[250px] border border-black bg-white transition-colors duration-300 hover:bg-[#0066FF]',
+        className: 'w-[250px] h-[250px] border border-black bg-white transition-colors duration-300 hover:bg-[#F5CC00]',
         style: { top: '30%', left: '20%' }
       },
       {
-        className: 'w-[120px] h-[300px] border border-black bg-white transition-colors duration-300 hover:bg-[#FF6B35]',
+        className: 'w-[120px] h-[300px] border border-black bg-white transition-colors duration-300 hover:bg-[#753B67]',
         style: { top: '10%', right: '30%' }
       }
     ]
@@ -169,7 +169,7 @@ function Card({
   );
 }
 
-const COLORS = ['#0066FF', '#FF6B35', '#00C896'];
+const COLORS = ['#F5CC00', '#753B67', '#35A09E'];
 
 export default function Services() {
   const containerRef = useRef(null);
