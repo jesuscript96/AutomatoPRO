@@ -60,8 +60,37 @@ export default function Works() {
   useGSAP(() => {
     if (!containerRef.current) return;
 
-    // CRITICAL: Normalize scroll for mobile browsers
-    // This fixes issues with floating address bars and scroll behavior
+    // Detectar si es mobile (< 768px)
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
+    // En mobile, no aplicar animaciones GSAP, solo layout normal
+    if (isMobile) {
+      // Limpiar cualquier estilo inline que pueda haber quedado
+      const cards = gsap.utils.toArray<HTMLElement>('.work-card');
+      cards.forEach((card) => {
+        gsap.set(card, {
+          clearProps: 'all', // Limpiar todos los estilos inline de GSAP
+        });
+        const content = card.querySelector('.work-content') as HTMLElement;
+        if (content) {
+          gsap.set(content, {
+            clearProps: 'all',
+          });
+        }
+      });
+
+      // Ocultar las líneas en mobile
+      const lines = gsap.utils.toArray<HTMLElement>('.work-line');
+      lines.forEach((line) => {
+        gsap.set(line, {
+          display: 'none',
+        });
+      });
+
+      return; // No ejecutar el resto de la lógica GSAP
+    }
+
+    // DESKTOP: Código GSAP original
     ScrollTrigger.normalizeScroll(true);
     ScrollTrigger.config({
       ignoreMobileResize: true,
@@ -359,7 +388,7 @@ export default function Works() {
         </div>
 
         {/* Cards de trabajos */}
-        <div className="space-y-0 relative">
+        <div className="space-y-0 relative h-auto md:h-screen">
           {/* Líneas de secciones cerradas - siempre visibles en la parte inferior */}
           <div
             className="work-lines-container absolute bottom-0 left-0 right-0 pointer-events-none"
@@ -389,9 +418,10 @@ export default function Works() {
           {works.map((work, index) => (
             <div
               key={work.id}
-              className="work-card border-t border-white/30"
+              className="work-card border-t border-white/30 
+                         md:absolute md:overflow-hidden 
+                         relative overflow-visible mb-0"
               style={{
-                overflow: 'hidden',
                 backgroundColor: workColors[index] || '#ffffff',
                 boxShadow: '-4px -4px 0px 0px rgba(0, 0, 0, 0.2), -8px -8px 0px 0px rgba(0, 0, 0, 0.1), -12px -12px 0px 0px rgba(0, 0, 0, 0.05)',
               }}
@@ -402,7 +432,7 @@ export default function Works() {
               </div>
 
               {/* Contenido que se revela - Flex en mobile, Grid en desktop */}
-              <div className="work-content px-4 md:px-8 pb-8">
+              <div className="work-content px-4 md:px-8 pb-8 opacity-100 md:opacity-0">
                 <div className="flex flex-col lg:grid lg:grid-cols-12 gap-8">
                   {/* COLUMNA IZQUIERDA - Información */}
                   <div className="lg:col-span-4 space-y-4 lg:space-y-6 order-2 lg:order-1">
