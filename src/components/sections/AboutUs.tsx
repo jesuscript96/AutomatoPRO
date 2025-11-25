@@ -24,7 +24,7 @@ export default function AboutUs() {
             top: '15%',
             right: '10%',
             boxShadow: '2px 2px 0px 0px rgba(0, 0, 0, 0.1), 4px 4px 0px 0px rgba(0, 0, 0, 0.05)',
-            backgroundImage: 'url(/tomatemorado.png)',
+            backgroundImage: 'url(/Tomatemorado.png)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
