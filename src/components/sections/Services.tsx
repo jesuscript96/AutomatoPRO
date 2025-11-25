@@ -133,7 +133,7 @@ function Card({
         x: finalX,
         zIndex: i + 10,
         boxShadow: '4px 4px 0px 0px rgba(0, 0, 0, 0.2), -4px -4px 0px 0px rgba(0, 0, 0, 0.2), 8px 8px 0px 0px rgba(0, 0, 0, 0.1), -8px -8px 0px 0px rgba(0, 0, 0, 0.1), 12px 12px 0px 0px rgba(0, 0, 0, 0.05), -12px -12px 0px 0px rgba(0, 0, 0, 0.05)',
-        backgroundImage: i === 0 ? 'url(/fondomarillo.png)' : i === 1 ? 'url(/fondozul.png)' : 'url(/morado.png)',
+        backgroundImage: i === 0 ? 'url(/fondomarillo.png)' : i === 1 ? 'url(/fondozul.png)' : 'url(/Morado.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
