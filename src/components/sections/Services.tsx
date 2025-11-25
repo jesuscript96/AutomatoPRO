@@ -184,10 +184,10 @@ function Card({
       {/* Título en esquina superior izquierda */}
       <FadeIn direction="up">
         <div className="mb-32 max-w-2xl relative z-30">
-          <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
+          <h2 className={`text-5xl md:text-6xl font-bold ${service.textColor} mb-6`}>
             {service.title}
           </h2>
-          <p className="text-body-lg md:text-xl text-white font-light">
+          <p className={`text-body-lg md:text-xl ${service.textColor} font-light`}>
             {service.description}
           </p>
         </div>
@@ -197,10 +197,10 @@ function Card({
       <FadeIn direction="up" delay={0.4}>
         <div className="flex justify-end">
           <div className="max-w-2xl text-right relative z-30">
-            <h3 className="text-5xl md:text-6xl font-bold text-white mb-6">
+            <h3 className={`text-5xl md:text-6xl font-bold ${service.textColor} mb-6`}>
               {service.secondaryTitle}
             </h3>
-            <p className="text-body-lg md:text-xl text-white font-light mb-6">
+            <p className={`text-body-lg md:text-xl ${service.textColor} font-light mb-6`}>
               {service.description}
             </p>
           </div>
