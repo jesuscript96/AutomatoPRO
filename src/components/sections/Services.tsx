@@ -89,30 +89,34 @@ function Card({
   const start = i * 0.25;
   const end = start + 0.25;
   const exitStart = end;
-  const exitEnd = exitStart + 0.2;
+  const exitEnd = exitStart + 0.3; // Increased from 0.2 to 0.3 for smoother transitions
 
+  // Smoother entry animation with extended range
   const y = useTransform(
     progress,
-    [start, start + 0.1],
+    [start, start + 0.15], // Extended from 0.1 to 0.15 for smoother entry
     ['100vh', '0vh']
   );
 
+  // More dramatic scale reduction
   const scale = useTransform(
     progress,
     [exitStart, exitEnd],
-    [1, 0.8]
+    [1, 0.65] // Reduced from 0.8 to 0.65 for more exaggerated effect
   );
 
+  // More exaggerated 3D rotation
   const rotateY = useTransform(
     progress,
     [exitStart, exitEnd],
-    [0, service.flipDirection === 'left' ? -15 : service.flipDirection === 'right' ? 15 : 0]
+    [0, service.flipDirection === 'left' ? -35 : service.flipDirection === 'right' ? 35 : 0] // Increased from ±15 to ±35
   );
 
+  // More dramatic horizontal translation
   const x = useTransform(
     progress,
     [exitStart, exitEnd],
-    ['0%', service.flipDirection === 'left' ? '-20%' : service.flipDirection === 'right' ? '20%' : '0%']
+    ['0%', service.flipDirection === 'left' ? '-40%' : service.flipDirection === 'right' ? '40%' : '0%'] // Increased from ±20% to ±40%
   );
 
   const isLast = i === services.length - 1;
@@ -133,6 +137,12 @@ function Card({
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
+      transition={{
+        type: 'spring',
+        stiffness: 100,
+        damping: 30,
+        mass: 1
+      }}
       className="absolute top-0 w-full h-full border border-black bg-white origin-bottom overflow-hidden p-6 md:p-20"
     >
       {/* Bloques de colores */}
@@ -140,8 +150,7 @@ function Card({
       <div
         className="hidden md:block absolute w-[280px] h-[280px] md:w-[320px] md:h-[320px] border border-black z-10 transition-colors duration-300 hover:bg-[#753B67]"
         style={{
-          top: '15%',
-          right: '10%',
+          ...(i === 1 ? { top: '15%', right: '10%' } : { bottom: '10%', left: '10%' }),
           boxShadow: '2px 2px 0px 0px rgba(0, 0, 0, 0.1), 4px 4px 0px 0px rgba(0, 0, 0, 0.05)',
           backgroundImage: 'url(/tomatemorado.png)',
           backgroundSize: 'cover',
@@ -291,7 +300,7 @@ export default function Services() {
 
         {/* Cards Container */}
         {/* Cards need higher z-index to slide OVER the header */}
-        <div className="relative w-full h-full flex items-center justify-center perspective-[1200px] z-10 pointer-events-none">
+        <div className="relative w-full h-full flex items-center justify-center perspective-[800px] z-10 pointer-events-none">
           {services.map((service, i) => (
             <div key={i} className="pointer-events-auto w-full h-full absolute top-0 left-0 flex items-center justify-center">
               <Card

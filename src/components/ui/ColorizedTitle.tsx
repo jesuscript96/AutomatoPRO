@@ -46,9 +46,9 @@ export default function ColorizedTitle({ text, className = '', tag = 'h1' }: Col
         return (
             <span key={wordIndex} className="inline-block mr-[0.25em]">
                 {letters.map((letter, letterIndex) => {
-                    // Decide if this letter should be colored (40% chance)
+                    // Decide if this letter should be colored (70% chance)
                     const letterSeed = wordSeed + letterIndex + 100;
-                    const isColored = seededRandom(letterSeed) > 0.6;
+                    const isColored = seededRandom(letterSeed) > 0.3;
 
                     return (
                         <span
