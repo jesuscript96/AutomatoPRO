@@ -94,6 +94,28 @@ html.lenis {
   animation-play-state: paused;
 }
 
+/* Mobile‑only Worksmobile section */
+@media (min-width: 769px) {
+  .hidden-desktop {
+    display: none !important;
+  }
+}
+
+.worksmobile-card {
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  margin: 0.5rem;
+  background: var(--hero-primary, #F5CC00);
+  /* fallback to first hero color */
+  color: #fff;
+  transition: transform 0.2s ease;
+}
+
+.worksmobile-card:hover {
+  transform: translateY(-4px);
+}
+
 /* Hide Works section on mobile */
 @media (max-width: 768px) {
   .hidden-mobile {

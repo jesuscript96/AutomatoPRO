@@ -101,7 +101,7 @@ export default function Header() {
             onClick={() => scrollToSection('hero')}
           >
             <Image
-              src="/logoautomatoPRO.png"
+              src="/logueiru.png"
               alt="AutomatoPRO Logo"
               width={260}
               height={78}

@@ -52,9 +52,9 @@ export const metadata: Metadata = {
   description:
     'Creamos experiencias web únicas que cuentan tu historia. Personalización 100% para marcas con personalidad que quieren dejar huella con su storytelling.',
   icons: {
-    icon: '/logotab.png',
-    shortcut: '/logotab.png',
-    apple: '/logotab.png',
+    icon: '/tabdub.png',
+    shortcut: '/tabdub.png',
+    apple: '/tabdub.png',
   },
   openGraph: {
     title: 'Storytelling | Personalización 100% para Marcas con Personalidad',
