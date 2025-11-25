@@ -42,7 +42,7 @@ export default function AboutUs() {
           }}
         />
 
-        {/* Bloque verde - Rectángulo horizontal */}
+        {/* Bloque verde - Rectángulo horizontal 
         <div
           className="absolute w-[300px] h-[150px] md:w-[360px] md:h-[180px] bg-white border border-black z-10 transition-colors duration-300 hover:bg-[#F5CC00]"
           style={{
@@ -51,7 +51,7 @@ export default function AboutUs() {
             boxShadow: '2px 2px 0px 0px rgba(0, 0, 0, 0.1), 4px 4px 0px 0px rgba(0, 0, 0, 0.05)',
           }}
         />
-
+        */}
 
 
         {/* Título en esquina superior izquierda */}

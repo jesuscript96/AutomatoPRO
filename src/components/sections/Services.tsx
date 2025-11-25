@@ -2,6 +2,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
 import ColorizedTitle from '@/components/ui/ColorizedTitle';
+import FadeIn from '@/components/animations/FadeIn';
 
 const services = [
   {
@@ -127,44 +128,75 @@ function Card({
         rotateY: finalRotateY,
         x: finalX,
         zIndex: i + 10,
-        boxShadow: '4px 4px 0px 0px rgba(0, 0, 0, 0.2), -4px -4px 0px 0px rgba(0, 0, 0, 0.2), 8px 8px 0px 0px rgba(0, 0, 0, 0.1), -8px -8px 0px 0px rgba(0, 0, 0, 0.1), 12px 12px 0px 0px rgba(0, 0, 0, 0.05), -12px -12px 0px 0px rgba(0, 0, 0, 0.05)'
+        boxShadow: '4px 4px 0px 0px rgba(0, 0, 0, 0.2), -4px -4px 0px 0px rgba(0, 0, 0, 0.2), 8px 8px 0px 0px rgba(0, 0, 0, 0.1), -8px -8px 0px 0px rgba(0, 0, 0, 0.1), 12px 12px 0px 0px rgba(0, 0, 0, 0.05), -12px -12px 0px 0px rgba(0, 0, 0, 0.05)',
+        backgroundImage: i === 0 ? 'url(/fondomarillo.png)' : i === 1 ? 'url(/fondozul.png)' : 'url(/morado.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
       }}
-      className={`absolute top-0 w-full h-full border border-black ${service.color} origin-bottom overflow-hidden`}
+      className="absolute top-0 w-full h-full border border-black bg-white origin-bottom overflow-hidden p-6 md:p-20"
     >
-      {/* Decorative Blocks */}
-      {service.blocks.map((block, idx) => (
-        <div
-          key={idx}
-          className={`absolute z-0 ${block.className}`}
-          style={{
-            ...block.style,
-            boxShadow: '2px 2px 0px 0px rgba(0, 0, 0, 0.1)'
-          }}
-        />
-      ))}
-
-      {/* Main Title */}
+      {/* Bloques de colores */}
+      {/* Bloque con imagen (Desktop) */}
       <div
-        className="absolute z-20 max-w-2xl"
-        style={service.mainTitlePosition}
-      >
-        <h3 className={`text-6xl md:text-8xl font-bold ${service.textColor} tracking-tight`}>
-          {service.title}
-        </h3>
-      </div>
+        className="hidden md:block absolute w-[280px] h-[280px] md:w-[320px] md:h-[320px] border border-black z-10 transition-colors duration-300 hover:bg-[#753B67]"
+        style={{
+          top: '15%',
+          right: '10%',
+          boxShadow: '2px 2px 0px 0px rgba(0, 0, 0, 0.1), 4px 4px 0px 0px rgba(0, 0, 0, 0.05)',
+          backgroundImage: 'url(/tomatemorado.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      />
 
-      {/* Secondary Title + Content */}
+      {/* Bloque transparente (Mobile) */}
       <div
-        className="absolute z-20 max-w-xl flex flex-col"
-        style={service.contentPosition}
-      >
-        <h4 className={`text-3xl md:text-4xl font-bold mb-6 ${service.textColor} opacity-90`}>
-          {service.secondaryTitle}
-        </h4>
-        <p className={`text-xl md:text-2xl ${service.textColor} font-light leading-relaxed`}>
-          {service.description}
-        </p>
-      </div>
+        className="md:hidden absolute w-[200px] h-[200px] border border-black z-10 transition-colors duration-300 hover:bg-[#F5CC00]"
+        style={{
+          top: '10%',
+          right: '5%',
+          boxShadow: '2px 2px 0px 0px rgba(0, 0, 0, 0.1), 4px 4px 0px 0px rgba(0, 0, 0, 0.05)',
+          backgroundColor: 'transparent'
+        }}
+      />
+
+      {/* Bloque verde - Rectángulo horizontal 
+      <div
+        className="absolute w-[300px] h-[150px] md:w-[360px] md:h-[180px] bg-white border border-black z-10 transition-colors duration-300 hover:bg-[#F5CC00]"
+        style={{
+          top: '50%',
+          left: '5%',
+          boxShadow: '2px 2px 0px 0px rgba(0, 0, 0, 0.1), 4px 4px 0px 0px rgba(0, 0, 0, 0.05)',
+        }}
+      />
+      */}
+
+      {/* Título en esquina superior izquierda */}
+      <FadeIn direction="up">
+        <div className="mb-32 max-w-2xl relative z-30">
+          <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
+            {service.title}
+          </h2>
+          <p className="text-body-lg md:text-xl text-white font-light">
+            {service.description}
+          </p>
+        </div>
+      </FadeIn>
+
+      {/* Filosofía en esquina inferior derecha */}
+      <FadeIn direction="up" delay={0.4}>
+        <div className="flex justify-end">
+          <div className="max-w-2xl text-right relative z-30">
+            <h3 className="text-5xl md:text-6xl font-bold text-white mb-6">
+              {service.secondaryTitle}
+            </h3>
+            <p className="text-body-lg md:text-xl text-white font-light mb-6">
+              {service.description}
+            </p>
+          </div>
+        </div>
+      </FadeIn>
     </motion.div>
   );
 }
