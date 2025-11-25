@@ -135,7 +135,7 @@ export default function Contact() {
             transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="flex-1 relative z-30 hidden md:block"
           >
-            <p className="text-body-lg text-gray-700 font-light">
+            <p className="text-body-lg text-gray-700 font-light text-backdrop-light">
               Si tu marca tiene personalidad y quieres dejar huella con tu storytelling, hablemos.
             </p>
           </motion.div>
@@ -152,7 +152,7 @@ export default function Contact() {
             transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="relative z-30"
           >
-            <p className="text-xl md:text-body-lg text-gray-700 font-light">
+            <p className="text-xl md:text-body-lg text-gray-700 font-light text-backdrop-light">
               Estamos aquí para crear algo único contigo.
             </p>
           </motion.div>
@@ -174,7 +174,7 @@ export default function Contact() {
           >
             {/* Nombre de la agencia - Izquierda */}
             <div className="md:absolute md:left-6 lg:left-8 text-center md:text-left">
-              <p className="text-body-lg text-gray-700 font-light">
+              <p className="text-body-lg text-gray-700 font-light text-backdrop-light">
                 Automato Agency Ltd
               </p>
             </div>
@@ -193,7 +193,7 @@ export default function Contact() {
 
             {/* Localización - Derecha */}
             <div className="md:absolute md:right-6 lg:right-8 text-center md:text-right">
-              <p className="text-body-lg text-gray-700 font-light">
+              <p className="text-body-lg text-gray-700 font-light text-backdrop-light">
                 Estamos en Ciudad de México
               </p>
             </div>

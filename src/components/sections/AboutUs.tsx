@@ -60,7 +60,7 @@ export default function AboutUs() {
             <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
               Sobre Nosotros
             </h2>
-            <p className="text-body-lg md:text-xl text-white font-light">
+            <p className="text-body-lg md:text-xl text-white font-light text-backdrop">
               Crear una web es como cultivar un tomate: requiere paciencia, cuidado y dedicación.
               Cada línea de código, cada detalle de diseño, se trabaja con la misma atención
               que un agricultor dedica a sus cultivos. No hay atajos en la artesanía.
@@ -75,13 +75,13 @@ export default function AboutUs() {
               <h3 className="text-5xl md:text-6xl font-bold text-white mb-6">
                 Nuestra Cultura
               </h3>
-              <p className="text-body-lg md:text-xl text-white font-light mb-6">
+              <p className="text-body-lg md:text-xl text-white font-light mb-6 text-backdrop">
                 Así como un tomate necesita tiempo para crecer, ser regado con cuidado y
                 recibir la atención adecuada, cada proyecto web requiere un proceso artesanal.
                 No creamos en producción en masa. Cada sitio es único, cultivado desde cero
                 con dedicación y esmero.
               </p>
-              <p className="text-body-lg md:text-xl text-white font-light">
+              <p className="text-body-lg md:text-xl text-white font-light text-backdrop">
                 Nuestra cultura de trabajo se basa en el respeto por el proceso, la atención
                 al detalle y la pasión por crear algo verdaderamente excepcional. Trabajamos
                 con marcas que valoran la artesanía digital y entienden que lo mejor requiere

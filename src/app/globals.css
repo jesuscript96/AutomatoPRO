@@ -63,6 +63,26 @@ html.lenis {
   .text-balance {
     text-wrap: balance;
   }
+
+  .text-backdrop {
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 0.375rem;
+    padding: 0.25rem 0.5rem;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  .text-backdrop-light {
+    background-color: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 0.375rem;
+    padding: 0.25rem 0.5rem;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
 }
 
 /* Animación marquee para "View More" */

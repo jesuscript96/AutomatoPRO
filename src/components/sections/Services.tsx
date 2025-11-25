@@ -6,9 +6,9 @@ import FadeIn from '@/components/animations/FadeIn';
 
 const services = [
   {
-    title: 'Desarrollo Web',
-    secondaryTitle: 'Artesanía Digital',
-    description: 'Sitios web únicos y artesanales, construidos desde cero. No usamos plantillas, creamos experiencias a medida.',
+    title: 'Storytelling Web',
+    secondaryTitle: 'Narrativa de Marca',
+    description: 'Trasladamos tu historia y personalidad al mundo digital. No hacemos simples webs, creamos experiencias narrativas que conectan.',
     color: 'bg-[#753B67]', // Purple
     textColor: 'text-white',
     flipDirection: 'left',
@@ -26,9 +26,9 @@ const services = [
     ]
   },
   {
-    title: 'Diseño UI/UX',
-    secondaryTitle: 'Experiencia de Usuario',
-    description: 'Interfaces intuitivas que cautivan. Diseñamos pensando en las personas, no solo en los píxeles.',
+    title: 'Diseño Boutique',
+    secondaryTitle: 'Experiencias Únicas',
+    description: 'Para marcas que cuidan su imagen. Cada detalle está diseñado artesanalmente para transmitir la esencia exclusiva de tu negocio.',
     color: 'bg-[#F5CC00]', // Yellow
     textColor: 'text-white',
     flipDirection: 'right',
@@ -46,9 +46,9 @@ const services = [
     ]
   },
   {
-    title: 'SEO & Performance',
-    secondaryTitle: 'Crecimiento Orgánico',
-    description: 'Optimizamos cada línea de código. Velocidad y visibilidad para que tu negocio destaque en la red.',
+    title: 'Expresión Digital',
+    secondaryTitle: 'Identidad Visual',
+    description: 'Ayudamos a tu marca a encontrar su voz en internet. Una presencia auténtica que refleja tus valores y cautiva a tu audiencia.',
     color: 'bg-[#35A09E]', // Teal
     textColor: 'text-white',
     flipDirection: 'none',
@@ -193,7 +193,7 @@ function Card({
           <h2 className={`text-5xl md:text-6xl font-bold ${service.textColor} mb-6`}>
             {service.title}
           </h2>
-          <p className={`text-body-lg md:text-xl ${service.textColor} font-light`}>
+          <p className={`text-body-lg md:text-xl ${service.textColor} font-light text-backdrop`}>
             {service.description}
           </p>
         </div>
@@ -206,7 +206,7 @@ function Card({
             <h3 className={`text-5xl md:text-6xl font-bold ${service.textColor} mb-6`}>
               {service.secondaryTitle}
             </h3>
-            <p className={`text-body-lg md:text-xl ${service.textColor} font-light mb-6`}>
+            <p className={`text-body-lg md:text-xl ${service.textColor} font-light mb-6 text-backdrop`}>
               {service.description}
             </p>
           </div>
@@ -269,7 +269,7 @@ export default function Services() {
             style={getLineStyle(0)}
           >
             <ColorizedTitle
-              text="NUESTROS"
+              text="NUESTRA"
               tag="h2"
               className="text-5xl md:text-7xl font-bold text-black leading-none tracking-tighter"
             />
@@ -281,7 +281,7 @@ export default function Services() {
             style={getLineStyle(1)}
           >
             <ColorizedTitle
-              text="SERVICIOS"
+              text="ESPECIALIDAD"
               tag="h2"
               className="text-5xl md:text-7xl font-bold text-black leading-none tracking-tighter"
             />
@@ -293,7 +293,7 @@ export default function Services() {
             style={getLineStyle(2)}
           >
             <p className="text-body-lg md:text-xl text-gray-600 font-light">
-              Soluciones digitales cultivadas con pasión y precisión.
+              Boutique de diseño con vocación de ayudar a las marcas a expresarse.
             </p>
           </div>
 

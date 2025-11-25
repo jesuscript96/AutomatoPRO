@@ -48,7 +48,7 @@ export default function Hero() {
           >
             {/* Nombre de la agencia - Izquierda */}
             <div className="md:absolute md:left-6 lg:left-8 text-center md:text-left">
-              <p className="text-body-lg text-gray-700 font-light">
+              <p className="text-body-lg text-gray-700 font-light text-backdrop-light">
                 Automato Agency Ltd
               </p>
             </div>
@@ -67,7 +67,7 @@ export default function Hero() {
 
             {/* Localización - Derecha */}
             <div className="md:absolute md:right-6 lg:right-8 text-center md:text-right hidden md:block">
-              <p className="text-body-lg text-gray-700 font-light">
+              <p className="text-body-lg text-gray-700 font-light text-backdrop-light">
                 Estamos en Ciudad de México
               </p>
             </div>

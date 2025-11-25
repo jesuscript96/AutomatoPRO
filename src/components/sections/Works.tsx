@@ -414,15 +414,15 @@ export default function Works() {
                     <div className="hidden lg:block space-y-2 text-lg text-white">
                       <div className="flex border-b border-white/30 py-2">
                         <span className="font-semibold w-48">Performing Group:</span>
-                        <span className="font-normal">{work.performingGroup}</span>
+                        <span className="font-normal text-backdrop">{work.performingGroup}</span>
                       </div>
                       <div className="flex border-b border-white/30 py-2">
                         <span className="font-semibold w-48">Genre:</span>
-                        <span className="font-normal">{work.genre}</span>
+                        <span className="font-normal text-backdrop">{work.genre}</span>
                       </div>
                       <div className="flex border-b border-white/30 py-2">
                         <span className="font-semibold w-48">Status:</span>
-                        <span className="font-normal">{work.status}</span>
+                        <span className="font-normal text-backdrop">{work.status}</span>
                       </div>
                     </div>
                   </div>
@@ -452,7 +452,7 @@ export default function Works() {
                       {/* Overlay con marquee "View More" */}
                       <div className="absolute inset-0 flex items-center justify-center bg-black/10">
                         <div className="marquee-container w-full">
-                          <div className="marquee-text text-white text-2xl font-semibold">
+                          <div className="marquee-text text-white text-2xl font-semibold text-backdrop">
                             View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More • View More •
                           </div>
                         </div>
@@ -469,7 +469,7 @@ export default function Works() {
                       rel="noopener noreferrer"
                       className="flex justify-between items-center mb-4 pb-4 border-b border-white/30 cursor-pointer hover:opacity-70 transition-opacity text-white"
                     >
-                      <span className="text-xl font-semibold">View More</span>
+                      <span className="text-xl font-semibold text-backdrop">View More</span>
                       <span className="text-2xl">→</span>
                     </a>
 
@@ -480,7 +480,7 @@ export default function Works() {
                           key={index}
                           className="border-b border-white/30 py-8 first:pt-0 text-white"
                         >
-                          <span className="text-lg">{item}</span>
+                          <span className="text-lg text-backdrop">{item}</span>
                         </div>
                       ))}
                     </div>
