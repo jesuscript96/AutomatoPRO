@@ -72,13 +72,15 @@ function Card({
   service,
   progress,
   range,
-  targetScale
+  targetScale,
+  isMobile
 }: {
   i: number;
   service: typeof services[0];
   progress: MotionValue<number>;
   range: [number, number];
   targetScale: number;
+  isMobile: boolean;
 }) {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -98,25 +100,29 @@ function Card({
     ['100vh', '0vh']
   );
 
-  // More dramatic scale reduction
+  // Scale reduction - gentler on mobile
   const scale = useTransform(
     progress,
     [exitStart, exitEnd],
-    [1, 0.65] // Reduced from 0.8 to 0.65 for more exaggerated effect
+    isMobile ? [1, 0.85] : [1, 0.65] // Less dramatic on mobile for smoother performance
   );
 
-  // More exaggerated 3D rotation
+  // 3D rotation - disabled on mobile for better performance
   const rotateY = useTransform(
     progress,
     [exitStart, exitEnd],
-    [0, service.flipDirection === 'left' ? -35 : service.flipDirection === 'right' ? 35 : 0] // Increased from ±15 to ±35
+    isMobile
+      ? [0, 0] // No rotation on mobile
+      : [0, service.flipDirection === 'left' ? -35 : service.flipDirection === 'right' ? 35 : 0]
   );
 
-  // More dramatic horizontal translation
+  // Horizontal translation - disabled on mobile for simpler stacking
   const x = useTransform(
     progress,
     [exitStart, exitEnd],
-    ['0%', service.flipDirection === 'left' ? '-40%' : service.flipDirection === 'right' ? '40%' : '0%'] // Increased from ±20% to ±40%
+    isMobile
+      ? ['0%', '0%'] // No horizontal movement on mobile
+      : ['0%', service.flipDirection === 'left' ? '-40%' : service.flipDirection === 'right' ? '40%' : '0%']
   );
 
   const isLast = i === services.length - 1;
@@ -215,6 +221,15 @@ const COLORS = ['#F5CC00', '#753B67', '#35A09E'];
 export default function Services() {
   const containerRef = useRef(null);
   const [lineColors, setLineColors] = useState<string[]>([]);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile viewport for conditional animations
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     setLineColors([
@@ -300,7 +315,7 @@ export default function Services() {
 
         {/* Cards Container */}
         {/* Cards need higher z-index to slide OVER the header */}
-        <div className="relative w-full h-full flex items-center justify-center perspective-[800px] z-10 pointer-events-none">
+        <div className="relative w-full h-full flex items-center justify-center md:perspective-[800px] z-10 pointer-events-none">
           {services.map((service, i) => (
             <div key={i} className="pointer-events-auto w-full h-full absolute top-0 left-0 flex items-center justify-center">
               <Card
@@ -309,6 +324,7 @@ export default function Services() {
                 progress={scrollYProgress}
                 range={[i * 0.25, 1]}
                 targetScale={1 - (services.length - i) * 0.05}
+                isMobile={isMobile}
               />
             </div>
           ))}

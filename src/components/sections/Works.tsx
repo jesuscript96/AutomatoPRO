@@ -60,12 +60,23 @@ export default function Works() {
   useGSAP(() => {
     if (!containerRef.current) return;
 
+    // CRITICAL: Normalize scroll for mobile browsers
+    // This fixes issues with floating address bars and scroll behavior
+    ScrollTrigger.normalizeScroll(true);
+    ScrollTrigger.config({
+      ignoreMobileResize: true,
+      autoRefreshEvents: "visibilitychange,DOMContentLoaded,load"
+    });
+
     const cards = gsap.utils.toArray<HTMLElement>('.work-card');
     const collapsedHeight = 50; // Altura cuando está colapsada (solo número visible)
 
     // Función para calcular y actualizar alturas
     const setupCards = () => {
-      const viewportHeight = window.innerHeight;
+      // Use visualViewport for better mobile support (handles floating address bars)
+      const viewportHeight = typeof window !== 'undefined' && window.visualViewport
+        ? window.visualViewport.height
+        : window.innerHeight;
       const maxHeight = viewportHeight; // Altura completa del viewport
 
       // Calcular alturas completas de todas las cards
@@ -100,6 +111,7 @@ export default function Works() {
           width: '100%',
           zIndex: cards.length - index + 10, // Primera card tiene zIndex más alto, por encima de las líneas
           backgroundColor: workColors[index] || '#ffffff', // Color de fondo según el índice
+          willChange: 'transform, height, opacity', // Optimize for animations
         });
 
         if (content) {
@@ -275,6 +287,7 @@ export default function Works() {
           pin: true,
           pinSpacing: true,
           invalidateOnRefresh: true,
+          anticipatePin: 1, // Prevent flash of unpinned content
         });
       };
 
