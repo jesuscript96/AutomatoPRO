@@ -10,7 +10,9 @@ export default function Home() {
       <Hero />
       <Services />
       <AboutUs />
-      <Works />
+      <div className="hidden-mobile">
+        <Works />
+      </div>
       <Contact />
     </>
   );

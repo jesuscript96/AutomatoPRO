@@ -83,6 +83,7 @@ html.lenis {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -93,3 +94,9 @@ html.lenis {
   animation-play-state: paused;
 }
 
+/* Hide Works section on mobile */
+@media (max-width: 768px) {
+  .hidden-mobile {
+    display: none !important;
+  }
+}
