@@ -50,7 +50,7 @@ const services = [
     secondaryTitle: 'Crecimiento Orgánico',
     description: 'Optimizamos cada línea de código. Velocidad y visibilidad para que tu negocio destaque en la red.',
     color: 'bg-[#35A09E]', // Teal
-    textColor: 'text-black',
+    textColor: 'text-white',
     flipDirection: 'none',
     mainTitlePosition: { top: '15%', right: '10%', textAlign: 'right' as const },
     contentPosition: { bottom: '20%', left: '10%', textAlign: 'left' as const, alignItems: 'flex-start' },
@@ -152,7 +152,7 @@ function Card({
         style={{
           ...(i === 1 ? { top: '15%', right: '10%' } : { bottom: '10%', left: '10%' }),
           boxShadow: '2px 2px 0px 0px rgba(0, 0, 0, 0.1), 4px 4px 0px 0px rgba(0, 0, 0, 0.05)',
-          backgroundImage: i === 0 ? 'url(/tomatemorado.png)' : i === 1 ? 'url(/tomateamarillo.png)' : 'url(/tomateazul.png)',
+          backgroundImage: i === 0 ? 'url(/Tomatemorado.png)' : i === 1 ? 'url(/tomateamarillo.png)' : 'url(/tomateazul.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
