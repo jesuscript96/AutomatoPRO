@@ -56,7 +56,7 @@ export default function Hero() {
             {/* WhatsApp CTA - Centrado */}
             <div className="md:absolute md:left-1/2 md:transform md:-translate-x-1/2 text-center">
               <a
-                href="https://wa.me/34600412492?text=Me%20gustaría%20hablar%20sobre%20mi%20proyecto%20web"
+                href="https://wa.me/525623229505?text=Me%20gustaría%20hablar%20sobre%20mi%20proyecto%20web"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block px-6 py-3 bg-white border border-black text-black hover:bg-black hover:text-white transition-all font-medium text-body"
