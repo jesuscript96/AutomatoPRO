@@ -7,8 +7,9 @@ import FadeIn from '@/components/animations/FadeIn';
 const services = [
   {
     title: 'Storytelling Web',
-    secondaryTitle: 'Narrativa de Marca',
-    description: 'Trasladamos tu historia y personalidad al mundo digital. No hacemos simples webs, creamos experiencias narrativas que conectan.',
+    secondaryTitle: '',
+    description: '',
+    description2: 'Traslada tu historia y tu personalidad al mundo digital. No hacemos simples webs, creamos experiencias narrativas que conectan. Siéntete cómodo con lo que expresa tu web, refleja tu personalidad.\n\n\n Cada elemento visual, cada palabra y cada interacción está diseñada para transmitir quién eres realmente. Tu presencia digital debe ser tan auténtica como una conversación cara a cara, construyendo confianza desde el primer clic.',
     color: 'bg-[#753B67]', // Purple
     textColor: 'text-white',
     flipDirection: 'left',
@@ -26,9 +27,10 @@ const services = [
     ]
   },
   {
-    title: 'Diseño Boutique',
+    title: '',
     secondaryTitle: 'Experiencias Únicas',
-    description: 'Para marcas que cuidan su imagen. Cada detalle está diseñado artesanalmente para transmitir la esencia exclusiva de tu negocio.',
+    description: 'Para marcas que cuidan su imagen. Cada detalle está diseñado artesanalmente para transmitir la esencia exclusiva de tu negocio.\n\n\nNo dejamos nada al azar: cada color, cada tipografía y cada espacio cuenta una parte de tu historia. Creamos identidades visuales que tus clientes recordarán y en las que confiarán.',
+    description2: 'Para marcas que cuidan su imagen. Cada detalle está diseñado artesanalmente para transmitir la esencia exclusiva de tu negocio.',
     color: 'bg-[#F5CC00]', // Yellow
     textColor: 'text-white',
     flipDirection: 'right',
@@ -48,7 +50,8 @@ const services = [
   {
     title: 'Expresión Digital',
     secondaryTitle: 'Identidad Visual',
-    description: 'Ayudamos a tu marca a encontrar su voz en internet. Una presencia auténtica que refleja tus valores y cautiva a tu audiencia.',
+    description2: 'Ayudamos a tu marca a encontrar su voz en internet. Una presencia auténtica que refleja tus valores y cautiva a tu audiencia.\n\n\nDesde el tono de tus mensajes hasta la experiencia de navegación, construimos coherencia en cada punto de contacto. Tu marca no solo será vista, será sentida y memorable.',
+    description: '',
     color: 'bg-[#35A09E]', // Teal
     textColor: 'text-white',
     flipDirection: 'none',
@@ -207,7 +210,7 @@ function Card({
               {service.secondaryTitle}
             </h3>
             <p className={`text-body-lg md:text-xl ${service.textColor} font-light mb-6 text-backdrop`}>
-              {service.description}
+              {service.description2}
             </p>
           </div>
         </div>

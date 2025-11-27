@@ -13,7 +13,7 @@ interface Work {
   genre: string;
   status: string;
   image: string;
-  listItems: string[];
+  description: string;
   url: string;
 }
 
@@ -23,32 +23,32 @@ const workColors = ['#F5CC00', '#753B67', '#35A09E'];
 const works: Work[] = [
   {
     id: 1,
-    title: 'E-commerce Platform',
+    title: 'Fashion E-commerce',
     performingGroup: 'TUILUS',
     genre: 'Moda',
     status: 'Live desde 2024',
-    image: '/tuiluscopia.tiff',
-    listItems: ['Catálogo de productos', 'Carrito de compra', 'Panel de admin'],
+    image: '/tuilusperro.png',
+    description: 'Diseño elegante y sofisticado para un e-commerce de moda. Desarrollamos una plataforma flexible con catálogo dinámico y ofertas personalizadas, priorizando una experiencia de usuario (UX) optimizada para maximizar la conversión y las ventas.',
     url: 'https://tuilus.com',
   },
   {
     id: 2,
-    title: "Diseño 100%",
+    title: "Laboratorio Artesanal",
     performingGroup: 'LABORATORIO ESPERANZA',
     genre: 'Salud y Alimentación',
     status: 'Producción',
-    image: '/yogurtbenefitslastcopia.tiff',
-    listItems: ['Sistema de pagos', 'Email Mkt', 'Información médica'],
+    image: '/intento.png',
+    description: 'Rebranding y desarrollo web para un laboratorio de venta de yogures. Creamos una identidad única que fusiona la artesanía del producto con el rigor científico, transmitiendo confianza y calidad a través de un diseño limpio y una narrativa de marca coherente.',
     url: 'https://laboratorioesperanza.com',
   },
   {
     id: 3,
-    title: 'Style, elegance',
+    title: 'Portfolio de Diseño',
     performingGroup: 'Designer PIPPA MORRAY',
     genre: 'Portfolio Creativo - Furniture',
     status: 'Live 2024',
     image: '/muebles.webp',
-    listItems: ['Galería de proyectos', 'Sobre la diseñadora', 'Formulario de contacto'],
+    description: 'Portfolio minimalista para una diseñadora. Diseñamos una web limpia y refinada que actúa como lienzo para su obra, permitiendo que sus proyectos y su historia sean los protagonistas absolutos.',
     url: 'https://www.pippamorraydesign.com/',
   },
 ];
@@ -460,7 +460,7 @@ export default function Works() {
                     </a>
                   </div>
 
-                  {/* COLUMNA DERECHA - Lista de items - Oculta en mobile */}
+                  {/* COLUMNA DERECHA - Descripción - Oculta en mobile */}
                   <div className="hidden lg:block lg:col-span-3 order-3">
                     {/* Header de la lista */}
                     <a
@@ -473,16 +473,11 @@ export default function Works() {
                       <span className="text-2xl">→</span>
                     </a>
 
-                    {/* Lista de items con líneas separadoras */}
-                    <div className="space-y-0">
-                      {work.listItems.map((item, index) => (
-                        <div
-                          key={index}
-                          className="border-b border-white/30 py-8 first:pt-0 text-white"
-                        >
-                          <span className="text-lg text-backdrop">{item}</span>
-                        </div>
-                      ))}
+                    {/* Descripción */}
+                    <div className="py-4 text-white">
+                      <p className="text-lg leading-relaxed text-backdrop">
+                        {work.description}
+                      </p>
                     </div>
                   </div>
                 </div>
