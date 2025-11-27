@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import './globals.css';
 import Header from '@/components/layout/Header';
 import SmoothScroll from '@/components/layout/SmoothScroll';
+import FloatingWhatsApp from '@/components/ui/FloatingWhatsApp';
 
 // Configurar fuentes Zodiak con diferentes pesos
 const zodiakThin = localFont({
@@ -119,6 +120,7 @@ export default function RootLayout({
         <Header />
 
         <main className="min-h-screen">{children}</main>
+        <FloatingWhatsApp />
       </body>
     </html>
   );

@@ -196,9 +196,11 @@ function Card({
           <h2 className={`text-5xl md:text-6xl font-bold ${service.textColor} mb-6`}>
             {service.title}
           </h2>
-          <p className={`text-body-lg md:text-xl ${service.textColor} font-light text-backdrop`}>
-            {service.description}
-          </p>
+          {service.description && (
+            <p className={`text-body-lg md:text-xl ${service.textColor} font-light text-backdrop`}>
+              {service.description}
+            </p>
+          )}
         </div>
       </FadeIn>
 
