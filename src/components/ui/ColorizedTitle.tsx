@@ -8,7 +8,7 @@ interface ColorizedTitleProps {
     tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'div';
 }
 
-const COLORS = ['#F5CC00', '#753B67', '#35A09E'];
+const COLORS = ['#F5CC00', '#753B67'];
 
 export default function ColorizedTitle({ text, className = '', tag = 'h1' }: ColorizedTitleProps) {
     const [mounted, setMounted] = useState(false);
@@ -30,7 +30,7 @@ export default function ColorizedTitle({ text, className = '', tag = 'h1' }: Col
         const wordSeed = word.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) + wordIndex;
 
         // Decide if this word should be colored (50% chance)
-        const shouldColor = seededRandom(wordSeed) > 0.5;
+        const shouldColor = seededRandom(wordSeed) > 0.25;
 
         if (!shouldColor) {
             return <span key={wordIndex} className="inline-block mr-[0.25em]">{word}</span>;
