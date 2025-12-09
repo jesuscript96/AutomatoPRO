@@ -18,7 +18,7 @@ export default function FloatingWhatsApp() {
 
     return (
         <motion.a
-            href="https://wa.me/525623229505?text=Me%20gustaría%20hablar%20sobre%20mi%20proyecto%20web"
+            href="https://wa.me/34600412492?text=I%20would%20like%20to%20talk%20about%20my%20web%20project"
             target="_blank"
             rel="noopener noreferrer"
             className="fixed bottom-6 right-6 z-[100] flex items-center justify-center w-14 h-14 bg-[#25D366] rounded-full shadow-lg hover:bg-[#20bd5a] transition-colors duration-300"

@@ -52,7 +52,7 @@ export default function Contact() {
             className="text-left relative z-30"
           >
             <ColorizedTitle
-              text="INICIEMOS"
+              text="LET'S START"
               tag="h1"
               className="uppercase text-[1.8rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.5rem] font-normal text-black leading-none"
             />
@@ -83,7 +83,7 @@ export default function Contact() {
             className="flex-1 flex justify-end relative z-30"
           >
             <ColorizedTitle
-              text="TU"
+              text="YOUR"
               tag="h1"
               className="uppercase text-[1.8rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.5rem] font-bold text-black leading-none text-right"
             />
@@ -102,7 +102,7 @@ export default function Contact() {
             className="text-right relative z-30"
           >
             <ColorizedTitle
-              text="PROYECTO"
+              text="PROJECT"
               tag="h1"
               className="uppercase text-[1.8rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.5rem] font-bold text-black leading-none"
             />
@@ -136,7 +136,7 @@ export default function Contact() {
             className="flex-1 relative z-30 hidden md:block"
           >
             <p className="text-body-lg text-gray-700 font-light text-backdrop-light">
-              Si tu marca tiene personalidad y quieres dejar huella con tu storytelling, hablemos.
+              If you want your business to grow and scale efficiently, let's talk.
             </p>
           </motion.div>
         </div>
@@ -153,7 +153,7 @@ export default function Contact() {
             className="relative z-30"
           >
             <p className="text-xl md:text-body-lg text-gray-700 font-light text-backdrop-light">
-              Estamos aquí para crear algo único contigo.
+              We are here to build your digital success.
             </p>
           </motion.div>
         </div>
@@ -182,19 +182,19 @@ export default function Contact() {
             {/* WhatsApp CTA - Centrado */}
             <div className="md:absolute md:left-1/2 md:transform md:-translate-x-1/2 text-center">
               <a
-                href="https://wa.me/525623229505?text=Me%20gustaría%20hablar%20sobre%20mi%20proyecto%20web"
+                href="https://wa.me/34600412492?text=I%20would%20like%20to%20talk%20about%20my%20web%20project"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block px-6 py-3 bg-white border border-black text-black hover:bg-black hover:text-white transition-all font-medium text-body"
               >
-                Enviar WhatsApp
+                Send WhatsApp
               </a>
             </div>
 
             {/* Localización - Derecha */}
             <div className="md:absolute md:right-6 lg:right-8 text-center md:text-right">
               <p className="text-body-lg text-gray-700 font-light text-backdrop-light">
-                Estamos en Ciudad de México
+                Based in Barcelona
               </p>
             </div>
           </motion.div>

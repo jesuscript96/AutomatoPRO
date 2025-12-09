@@ -58,12 +58,12 @@ export default function AboutUs() {
         <FadeIn direction="up">
           <div className="mb-32 max-w-2xl relative z-30">
             <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
-              Sobre Nosotros
+              About Us
             </h2>
             <p className="text-body-lg md:text-xl text-white font-light text-backdrop">
-              Crear una web es como cultivar un tomate: requiere paciencia, cuidado y dedicación.
-              Cada línea de código, cada detalle de diseño, se trabaja con la misma atención
-              que un agricultor dedica a sus cultivos. No hay atajos en la artesanía.
+              Growing a business is like cultivating a garden: it requires strategy, care, and dedication.
+              We help your business bloom in the digital landscape. Every strategy, every automation
+              is crafted with the same attention a farmer gives to their crops.
             </p>
           </div>
         </FadeIn>
@@ -73,19 +73,17 @@ export default function AboutUs() {
           <div className="flex justify-end">
             <div className="max-w-2xl text-right relative z-30">
               <h3 className="text-5xl md:text-6xl font-bold text-white mb-6">
-                Nuestra Cultura
+                Our Culture
               </h3>
               <p className="text-body-lg md:text-xl text-white font-light mb-6 text-backdrop">
-                Así como un tomate necesita tiempo para crecer, ser regado con cuidado y
-                recibir la atención adecuada, cada proyecto web requiere un proceso artesanal.
-                No creamos en producción en masa. Cada sitio es único, cultivado desde cero
-                con dedicación y esmero.
+                Just as a harvest needs time and the right tools, sustainable growth requires
+                a custom approach. We specialize in custom e-commerce, paid media, and operations automation.
+                We don't believe in one-size-fits-all. Each solution is unique.
               </p>
               <p className="text-body-lg md:text-xl text-white font-light text-backdrop">
-                Nuestra cultura de trabajo se basa en el respeto por el proceso, la atención
-                al detalle y la pasión por crear algo verdaderamente excepcional. Trabajamos
-                con marcas que valoran la artesanía digital y entienden que lo mejor requiere
-                tiempo, cuidado y dedicación.
+                Our culture is rooted in helping businesses grow. We combine digital craftsmanship
+                with data-driven strategies. We work with brands that value bespoke web creation
+                and efficient automation to scale their sales and operations.
               </p>
             </div>
           </div>

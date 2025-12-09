@@ -6,10 +6,10 @@ import FadeIn from '@/components/animations/FadeIn';
 
 const services = [
   {
-    title: 'Storytelling Web',
+    title: 'Custom Websites',
     secondaryTitle: '',
     description: '',
-    description2: 'Traslada tu historia y tu personalidad al mundo digital. No hacemos simples webs, creamos experiencias narrativas que conectan. Siéntete cómodo con lo que expresa tu web, refleja tu personalidad.\n\n\n Cada elemento visual, cada palabra y cada interacción está diseñada para transmitir quién eres realmente. Tu presencia digital debe ser tan auténtica como una conversación cara a cara, construyendo confianza desde el primer clic.',
+    description2: 'We build custom websitess, specially e-commerce experiences that sell. Not just simple websites, but robust platforms designed for growth. Let your online store reflect your brand\'s true potential.\n\n\nFrom intuitive UX to seamless checkout flows, every interaction is optimized for conversion. Your digital storefront should be your best salesperson, building trust and driving revenue 24/7.',
     color: 'bg-[#753B67]', // Purple
     textColor: 'text-white',
     flipDirection: 'left',
@@ -28,9 +28,9 @@ const services = [
   },
   {
     title: '',
-    secondaryTitle: 'Experiencias Únicas',
-    description: 'Para marcas que cuidan su imagen. Cada detalle está diseñado artesanalmente para transmitir la esencia exclusiva de tu negocio.\n\n\nNo dejamos nada al azar: cada color, cada tipografía y cada espacio cuenta una parte de tu historia. Creamos identidades visuales que tus clientes recordarán y en las que confiarán.',
-    description2: 'Para marcas que cuidan su imagen. Cada detalle está diseñado artesanalmente para transmitir la esencia exclusiva de tu negocio.',
+    secondaryTitle: 'Paid Media',
+    description: 'For brands that want to be seen. We craft data-driven campaigns to reach your ideal audience and maximize ROI.\n\n\nWe don\'t guess; we analyze. Every ad, every keyword, and every bid is calculated to drive traffic and sales. We turn clicks into loyal customers.',
+    description2: 'For brands that want to be seen. We craft data-driven campaigns to reach your ideal audience and maximize ROI.',
     color: 'bg-[#F5CC00]', // Yellow
     textColor: 'text-white',
     flipDirection: 'right',
@@ -48,9 +48,9 @@ const services = [
     ]
   },
   {
-    title: 'Expresión Digital',
-    secondaryTitle: 'Identidad Visual',
-    description2: 'Ayudamos a tu marca a encontrar su voz en internet. Una presencia auténtica que refleja tus valores y cautiva a tu audiencia.\n\n\nDesde el tono de tus mensajes hasta la experiencia de navegación, construimos coherencia en cada punto de contacto. Tu marca no solo será vista, será sentida y memorable.',
+    title: 'Automation',
+    secondaryTitle: 'Operations',
+    description2: 'We streamline your operations to save time and scale faster. Automate your sales processes and focus on what matters.\n\n\nFrom inventory management to customer follow-ups, we build efficient systems that work for you. Efficiency is the key to sustainable growth.',
     description: '',
     color: 'bg-[#35A09E]', // Teal
     textColor: 'text-white',
@@ -274,7 +274,7 @@ export default function Services() {
             style={getLineStyle(0)}
           >
             <ColorizedTitle
-              text="NUESTRA"
+              text="OUR"
               tag="h2"
               className="text-5xl md:text-7xl font-bold text-black leading-none tracking-tighter"
             />
@@ -286,7 +286,7 @@ export default function Services() {
             style={getLineStyle(1)}
           >
             <ColorizedTitle
-              text="ESPECIALIDAD"
+              text="EXPERTISE"
               tag="h2"
               className="text-5xl md:text-7xl font-bold text-black leading-none tracking-tighter"
             />
@@ -298,7 +298,7 @@ export default function Services() {
             style={getLineStyle(2)}
           >
             <p className="text-body-lg md:text-xl text-gray-600 font-light">
-              Boutique de diseño con vocación de ayudar a las marcas a expresarse.
+              Digital growth agency helping brands express themselves and scale.
             </p>
           </div>
 

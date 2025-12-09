@@ -22,29 +22,29 @@ const works: Work[] = [
     title: 'Fashion E-commerce',
     performingGroup: 'TUILUS',
     genre: 'Moda',
-    status: 'Live desde 2024',
+    status: 'Live since 2024',
     image: '/tuilusperro.png',
-    description: 'Diseño elegante y sofisticado para un e-commerce de moda. Desarrollamos una plataforma flexible con catálogo dinámico y ofertas personalizadas, priorizando una experiencia de usuario (UX) optimizada para maximizar la conversión y las ventas.',
+    description: 'Elegant and sophisticated design for a fashion e-commerce. We developed a flexible platform with a dynamic catalog and personalized offers, prioritizing an optimized UX to maximize conversion and sales.',
     url: 'https://tuilus.com',
   },
   {
     id: 2,
-    title: "Laboratorio Artesanal",
+    title: "Artisanal Laboratory",
     performingGroup: 'LABORATORIO ESPERANZA',
-    genre: 'Salud y Alimentación',
-    status: 'Producción',
+    genre: 'Health & Food',
+    status: 'In Production',
     image: '/intento.png',
-    description: 'Rebranding y desarrollo web para un laboratorio de venta de yogures. Creamos una identidad única que fusiona la artesanía del producto con el rigor científico, transmitiendo confianza y calidad a través de un diseño limpio y una narrativa de marca coherente.',
+    description: 'Rebranding and web development for a yogurt lab. We created a unique identity fusing product craftsmanship with scientific rigor, conveying trust and quality through clean design.',
     url: 'https://laboratorioesperanza.com',
   },
   {
     id: 3,
-    title: 'Portfolio de Diseño',
+    title: 'Design Portfolio',
     performingGroup: 'Designer PIPPA MORRAY',
-    genre: 'Portfolio Creativo - Furniture',
+    genre: 'Creative Portfolio - Furniture',
     status: 'Live 2024',
     image: '/muebles.webp',
-    description: 'Portfolio minimalista para una diseñadora. Diseñamos una web limpia y refinada que actúa como lienzo para su obra, permitiendo que sus proyectos y su historia sean los protagonistas absolutos.',
+    description: 'Minimalist portfolio for a designer. We designed a clean and refined website that acts as a canvas for her work, allowing her projects and story to be the absolute protagonists.',
     url: 'https://www.pippamorraydesign.com/',
   },
 ];
@@ -59,14 +59,14 @@ export default function WorksMobile() {
         <div className="mb-12 flex flex-col gap-2">
           <div className="text-left">
             <ColorizedTitle
-              text="NUESTROS"
+              text="OUR"
               tag="h2"
               className="uppercase text-[2.34rem] font-normal text-black leading-none"
             />
           </div>
           <div className="text-right">
             <ColorizedTitle
-              text="TRABAJOS"
+              text="WORKS"
               tag="h2"
               className="uppercase text-[2.34rem] font-medium text-black leading-none"
             />

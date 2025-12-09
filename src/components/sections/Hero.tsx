@@ -56,19 +56,19 @@ export default function Hero() {
             {/* WhatsApp CTA - Centrado */}
             <div className="md:absolute md:left-1/2 md:transform md:-translate-x-1/2 text-center">
               <a
-                href="https://wa.me/525623229505?text=Me%20gustaría%20hablar%20sobre%20mi%20proyecto%20web"
+                href="https://wa.me/34600412492?text=I%20would%20like%20to%20talk%20about%20my%20web%20project"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block px-6 py-3 bg-white border border-black text-black hover:bg-black hover:text-white transition-all font-medium text-body"
               >
-                Enviar WhatsApp
+                Send WhatsApp
               </a>
             </div>
 
             {/* Localización - Derecha */}
             <div className="md:absolute md:right-6 lg:right-8 text-center md:text-right hidden md:block">
               <p className="text-body-lg text-gray-700 font-light text-backdrop-light">
-                Estamos en Ciudad de México
+                Based in Barcelona
               </p>
             </div>
           </motion.div>
@@ -86,7 +86,7 @@ export default function Hero() {
             className="text-left relative z-30"
           >
             <ColorizedTitle
-              text="TU WEB,"
+              text="YOUR WEB,"
               tag="h1"
               className="uppercase text-[2.34rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.5rem] font-normal text-black leading-none"
             />
@@ -115,7 +115,7 @@ export default function Hero() {
             className="flex-1 flex justify-end relative z-30"
           >
             <ColorizedTitle
-              text="TU"
+              text="YOUR"
               tag="h1"
               className="uppercase text-[2.34rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.5rem] font-medium text-black leading-none text-right"
             />
@@ -134,7 +134,7 @@ export default function Hero() {
             className="text-right relative z-30"
           >
             <ColorizedTitle
-              text="ESCAPARATE"
+              text="SHOWCASE"
               tag="h1"
               className="uppercase text-[2.34rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.5rem] font-medium text-black leading-none"
             />
@@ -162,7 +162,7 @@ export default function Hero() {
             className="text-left relative z-30"
           >
             <ColorizedTitle
-              text="AL MUNDO."
+              text="TO THE WORLD."
               tag="h1"
               className="uppercase text-[2.34rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.5rem] font-normal text-black leading-none"
             />
@@ -181,7 +181,7 @@ export default function Hero() {
             className="text-right relative z-30"
           >
             <ColorizedTitle
-              text="REFLEJA TU"
+              text="REFLECT YOUR"
               tag="h1"
               className="uppercase text-[2.34rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.5rem] font-semibold text-black leading-none"
             />
@@ -200,7 +200,7 @@ export default function Hero() {
             className="text-center relative z-30"
           >
             <ColorizedTitle
-              text="PERSONALIDAD"
+              text="PERSONALITY"
               tag="h1"
               className="uppercase text-[2.34rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.8rem] font-medium text-black leading-none"
             />

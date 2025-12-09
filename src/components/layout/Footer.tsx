@@ -66,45 +66,45 @@ export default function Footer() {
         <FadeIn direction="up">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
             <div>
-              <h3 className="text-h3 font-bold mb-4 text-black">Storytelling</h3>
+              <h3 className="text-h3 font-bold mb-4 text-black">Growth</h3>
               <p className="text-body-sm text-gray-600 font-light">
-                Creamos experiencias web únicas que cuentan tu historia.
-                Personalización 100% para marcas con personalidad.
+                We help businesses grow with custom web solutions, paid media, and automation. 
+                Scalable strategies for modern brands.
               </p>
             </div>
 
             <div>
-              <h4 className="text-h4 font-semibold mb-4 text-black">Enlaces</h4>
+              <h4 className="text-h4 font-semibold mb-4 text-black">Links</h4>
               <ul className="space-y-2 text-body-sm text-gray-600 font-light">
                 <li>
                   <a href="#about" className="hover:text-black transition-colors">
-                    Sobre Nosotros
+                    About Us
                   </a>
                 </li>
                 <li>
                   <a href="#services" className="hover:text-black transition-colors">
-                    Servicios
+                    Services
                   </a>
                 </li>
                 <li>
                   <a href="#works" className="hover:text-black transition-colors">
-                    Trabajos
+                    Works
                   </a>
                 </li>
                 <li>
                   <a href="#contact" className="hover:text-black transition-colors">
-                    Contacto
+                    Contact
                   </a>
                 </li>
               </ul>
             </div>
 
             <div>
-              <h4 className="text-h4 font-semibold mb-4 text-black">Contacto</h4>
+              <h4 className="text-h4 font-semibold mb-4 text-black">Contact</h4>
               <ul className="space-y-2 text-body-sm text-gray-600 font-light">
-                <li>hola@storytelling.com</li>
-                <li>+34 123 456 789</li>
-                <li>Madrid, España</li>
+                <li>hola@automato.com</li>
+                <li>+34 600 41 24 92</li>
+                <li>Barcelona, Spain</li>
               </ul>
             </div>
           </div>
@@ -112,7 +112,7 @@ export default function Footer() {
 
         <FadeIn direction="up" delay={0.2}>
           <div className="border-t border-gray-300 pt-8 text-center text-body-sm text-gray-600 font-light">
-            <p>&copy; {currentYear} Storytelling. Todos los derechos reservados.</p>
+            <p>&copy; {currentYear} Automato Agency. All rights reserved.</p>
           </div>
         </FadeIn>
       </div>

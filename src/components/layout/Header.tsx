@@ -51,14 +51,14 @@ export default function Header() {
   };
 
   const leftNavItems = [
-    { label: 'Inicio', id: 'hero' },
-    { label: 'Sobre Nosotros', id: 'about' },
+    { label: 'Home', id: 'hero' },
+    { label: 'About Us', id: 'about' },
   ];
 
   const rightNavItems = [
-    { label: 'Servicios', id: 'services' },
-    { label: 'Trabajos', id: 'works' },
-    { label: 'Contacto', id: 'contact' },
+    { label: 'Services', id: 'services' },
+    { label: 'Works', id: 'works' },
+    { label: 'Contact', id: 'contact' },
   ];
 
   return (
