@@ -78,7 +78,7 @@ export default function AboutUs() {
               <p className="text-body-lg md:text-xl text-white font-light mb-6 text-backdrop">
                 Just as a harvest needs time and the right tools, sustainable growth requires
                 a custom approach. We specialize in custom e-commerce, paid media, and operations automation.
-                We don't believe in one-size-fits-all. Each solution is unique.
+                We don&apos;t believe in one-size-fits-all. Each solution is unique.
               </p>
               <p className="text-body-lg md:text-xl text-white font-light text-backdrop">
                 Our culture is rooted in helping businesses grow. We combine digital craftsmanship

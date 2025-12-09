@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
+import Script from 'next/script';
 import './globals.css';
 import Header from '@/components/layout/Header';
 import SmoothScroll from '@/components/layout/SmoothScroll';
@@ -49,18 +50,18 @@ const zodiakBlack = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'Storytelling | Personalización 100% para Marcas con Personalidad',
+  title: 'Automato | Digital Growth & Custom Web Development',
   description:
-    'Creamos experiencias web únicas que cuentan tu historia. Personalización 100% para marcas con personalidad que quieren dejar huella con su storytelling.',
+    'We help businesses grow with custom web solutions, paid media, and automation. Scalable strategies for modern brands based in Barcelona.',
   icons: {
     icon: '/tabdub.png',
     shortcut: '/tabdub.png',
     apple: '/tabdub.png',
   },
   openGraph: {
-    title: 'Storytelling | Personalización 100% para Marcas con Personalidad',
+    title: 'Automato | Digital Growth & Custom Web Development',
     description:
-      'Creamos experiencias web únicas que cuentan tu historia. Personalización 100% para marcas con personalidad que quieren dejar huella con su storytelling.',
+      'We help businesses grow with custom web solutions, paid media, and automation. Scalable strategies for modern brands based in Barcelona.',
     images: [
       {
         url: '/logotab.png',
@@ -72,9 +73,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Storytelling | Personalización 100% para Marcas con Personalidad',
+    title: 'Automato | Digital Growth & Custom Web Development',
     description:
-      'Creamos experiencias web únicas que cuentan tu historia. Personalización 100% para marcas con personalidad que quieren dejar huella con su storytelling.',
+      'We help businesses grow with custom web solutions, paid media, and automation. Scalable strategies for modern brands based in Barcelona.',
     images: ['/logotab.png'],
   },
 };
@@ -86,23 +87,21 @@ export default function RootLayout({
 }) {
   return (
     <html
-      lang="es"
+      lang="en"
       className={`${zodiakThin.variable} ${zodiakLight.variable} ${zodiakRegular.variable} ${zodiakBold.variable} ${zodiakExtrabold.variable} ${zodiakBlack.variable}`}
     >
       <head>
         {/* Google Tag Manager */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
+        <Script id="google-tag-manager" strategy="afterInteractive">
+          {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
               new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
               j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               'https://www.googletagmanager.com/gtm.js?id=GTM-NJRP67W3'+dl;
               f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','GTM-NJRP67W3');
-          `,
-          }}
-        />
+          `}
+        </Script>
       </head>
 
       <body className="antialiased" suppressHydrationWarning>

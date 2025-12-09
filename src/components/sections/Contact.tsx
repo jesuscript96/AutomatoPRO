@@ -136,7 +136,7 @@ export default function Contact() {
             className="flex-1 relative z-30 hidden md:block"
           >
             <p className="text-body-lg text-gray-700 font-light text-backdrop-light">
-              If you want your business to grow and scale efficiently, let's talk.
+              If you want your business to grow and scale efficiently, let&apos;s talk.
             </p>
           </motion.div>
         </div>
